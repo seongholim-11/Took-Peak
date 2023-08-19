@@ -32,13 +32,14 @@ img {
 
 .navbar {
   .container {
-    height: 70px;
+    height: auto;
     background-color: #262626;
     border-radius: 20px;
+    padding: 10px 20px;
     a {
       color: #fff;
     }
-    .navbar-brand{
+    .navbar-brand {
       color: #0070f3;
     }
     .navbar-toggler {
@@ -49,14 +50,25 @@ img {
     }
     .navbar-collapse {
       justify-content: end;
-    }
-    .navbar-nav {
-      & .show{
-        text-decoration: none;
-        color: #0070f3;
+      .navbar-nav {
+        margin: 0 20px;
+        & .show {
+          text-decoration: none;
+          color: #0070f3;
+        }
+        .dropdown-menu {
+          background-color: #262626;
+        }
       }
-      .dropdown-menu {
-        background-color: #262626;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    .container {
+      .loginBtn {
+        display: none;
       }
     }
   }
