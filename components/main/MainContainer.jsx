@@ -1,11 +1,12 @@
 "use client";
 
-import User from "@/components/main/user/User";
+import LoginUser from "@/components/main/user/LoginUser";
+import NotLoginUser from "@/components/main/user/NotLoginUser";
+import Calender from "./user/Calender";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Calender from "./user/Calender";
 
 import '../main/MainContainer.scss'
 
@@ -14,7 +15,8 @@ export default function MainContainer() {
         <Container>
             <Row className="userWrap">
                 <Col lg={7}>
-                    <User />
+                    <NotLoginUser/>
+                    {/* <LoginUser /> */}
                 </Col>
                 <Col lg={5}>
                     <Calender/>
