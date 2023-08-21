@@ -8,18 +8,21 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import '../main/MainContainer.scss'
+import { useSession } from "next-auth/react";
+
+import "../main/MainContainer.scss";
 
 export default function MainContainer() {
+    let session = useSession();
+    console.log("🚀 ~ file: MainContainer.jsx:17 ~ MainContainer ~ session:", session)
     return (
         <Container>
             <Row className="userWrap">
                 <Col lg={7}>
-                    <NotLoginUser/>
-                    {/* <LoginUser /> */}
+                    {session.data !== null ? <LoginUser /> : <NotLoginUser />}
                 </Col>
                 <Col lg={5}>
-                    <Calender/>
+                    <Calender />
                 </Col>
             </Row>
             <Row>

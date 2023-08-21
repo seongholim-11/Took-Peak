@@ -7,9 +7,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 
+import { signIn } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 import './nav.scss'
 
 function NavBar() {
+  let session = useSession();
   return (
     <Navbar expand="lg">
       <Container>
@@ -39,7 +44,14 @@ function NavBar() {
             </NavDropdown>
             <NavDropdown.Divider />
             <Nav.Link href="#features" className='signinup'>Sign Up</Nav.Link>
-            <Nav.Link href="#features" className='signinup'>Login</Nav.Link>
+            {session.data == null ? 
+            <Nav.Link className='signinup' onClick={() => {
+                    signIn();
+                }}>Login</Nav.Link> 
+                : <Nav.Link className='signinup' onClick={() => {
+                  signOut();
+              }}>Logout</Nav.Link>}
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

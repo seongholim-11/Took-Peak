@@ -114,7 +114,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                img{
+                img {
                     display: block;
                     margin: 0 auto;
                     width: 100px;
@@ -123,11 +123,11 @@
                     border-radius: 50%;
                     object-fit: cover;
                 }
-                label{
+                label {
                     color: #0070f3;
                     font-weight: bold;
                 }
-                input{
+                > input {
                     width: 100%;
                     height: 40px;
                     margin-bottom: 10px;
@@ -135,9 +135,24 @@
                     background-color: #f0f0f0;
                     font-size: 0.8rem;
                     padding: 0 10px;
-                    &#avatar{
+                    &#avatar {
                         background-color: transparent;
                         padding-top: 10px;
+                    }
+                }
+                p {
+                    color: #0070f3;
+                    font-weight: bold;
+                }
+                .specialize {
+                    display: flex;
+                    flex-wrap: wrap;
+                    input{
+                        margin-right: 5px;
+                    }
+                    label{
+                        margin-right: 10px;
+                        color: #7d7d7d;
                     }
                 }
             }
