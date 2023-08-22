@@ -18,7 +18,7 @@ export default function notLoginUser() {
     return (
         <div className="yetUser">
             <Button variant="primary" size="lg" onClick={handleShow}>
-                <AiOutlineUserAdd /> Sign Up
+                <AiOutlineUserAdd /> SIGN UP
             </Button>
 
             <Modal show={show} onHide={handleClose}>
@@ -195,7 +195,7 @@ export default function notLoginUser() {
                     signIn();
                 }}
             >
-                <BiLogIn /> Login
+                <BiLogIn /> LOGIN
             </Button>
         </div>
     );

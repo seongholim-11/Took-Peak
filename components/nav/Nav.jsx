@@ -5,10 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
 
+// 로그인, 로그아웃 기능을 위해 import
 import { signIn } from "next-auth/react";
 import { signOut } from "next-auth/react";
+
+// 로그인 유무 확인을 위해 import
 import { useSession } from "next-auth/react";
 
 import './nav.scss'
@@ -43,6 +45,7 @@ function NavBar() {
               <NavDropdown.Item href="#action/3.1">개발 면접</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown.Divider />
+            {/* 로그인이 안 되어 있으면 로그인 버튼이, 되어있으면 로그아웃 버튼이 출력*/}
             {session.data == null ? 
             <Nav.Link className='signInOut' onClick={() => {
                     signIn();
