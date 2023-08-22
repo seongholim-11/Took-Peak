@@ -15,6 +15,8 @@
             color: #fff;
         }
         .navbar-toggler {
+            box-shadow: none;
+            border: none;
             .navbar-toggler-icon {
                 border-radius: 7px;
                 background-color: #fff;
@@ -22,14 +24,19 @@
         }
         .navbar-collapse {
             justify-content: end;
+
             .navbar-nav {
                 margin: 0 20px;
                 & .show {
                     text-decoration: none;
-                    color: #0070f3;
+                    color: #ffffff;
                 }
                 .dropdown-menu {
-                    background-color: #262626;
+                    background-color: #ffffff;
+                    .dropdown-item{
+                        color: #000;
+                        font-size: 0.8rem;
+                    }
                 }
                 .signinup {
                     display: none;
@@ -46,8 +53,9 @@
                 .navbar-nav {
                     .dropdown-divider {
                         border: 1px solid #fff;
+                        margin: 5px 0;
                     }
-                    .signinup {
+                    .signInOut {
                         display: block;
                     }
                 }
