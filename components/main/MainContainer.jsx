@@ -13,6 +13,7 @@ import { useSession } from "next-auth/react";
 import "../main/MainContainer.scss";
 
 export default function MainContainer() {
+    // 로그인 유무를 위한 함수
     let session = useSession();
     return (
         <Container>

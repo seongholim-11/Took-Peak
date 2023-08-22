@@ -3,6 +3,7 @@ import { signOut } from "next-auth/react";
 import Spinner from "react-bootstrap/Spinner";
 
 export default function User() {
+    // 로그인한 유저 정보
     const [userInformation, setUserInformation] = useState({
         avatar: "/image/main/user/avatar.png",
         email: "123456@gmail.com",
@@ -10,9 +11,11 @@ export default function User() {
         specialize: "skill",
     });
 
+    // 로딩 유무
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // 서버로부터 유저 정보 받아오기
         const userInf = async () => {
             try {
                 const response = await fetch(`/api/get/loginuser`);
