@@ -29,6 +29,7 @@ export default async function handler(req, res) {
             return res.status(405).json({ error: "Method not allowed" });
         }
     }else{
+        // 세션이 없는 경우
         return res.status(401).json({ error: "Unauthorized" });
     }
 }
