@@ -16,7 +16,7 @@ export default function notLoginUser() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
-        <div className="mb-2 yetUser">
+        <div className="yetUser">
             <Button variant="primary" size="lg" onClick={handleShow}>
                 <AiOutlineUserAdd /> Sign Up
             </Button>

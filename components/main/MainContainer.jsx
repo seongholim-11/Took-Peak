@@ -14,7 +14,6 @@ import "../main/MainContainer.scss";
 
 export default function MainContainer() {
     let session = useSession();
-    console.log("🚀 ~ file: MainContainer.jsx:17 ~ MainContainer ~ session:", session)
     return (
         <Container>
             <Row className="userWrap">
