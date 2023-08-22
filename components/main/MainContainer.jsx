@@ -3,6 +3,7 @@
 import LoginUser from "@/components/main/user/LoginUser";
 import NotLoginUser from "@/components/main/user/NotLoginUser";
 import Calender from "./user/Calender";
+import AcademySearch from "./search/AcademySearch";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,6 +12,7 @@ import Col from "react-bootstrap/Col";
 import { useSession } from "next-auth/react";
 
 import "../main/MainContainer.scss";
+import Board from "./board/board";
 
 export default function MainContainer() {
     // 로그인 유무를 위한 함수
@@ -26,10 +28,10 @@ export default function MainContainer() {
                 </Col>
             </Row>
             <Row>
-                <Col>2-1</Col>
+                <Col><AcademySearch/></Col>
             </Row>
             <Row>
-                <Col>3-1</Col>
+                <Col><Board/></Col>
             </Row>
             <Row>
                 <Col lg={8} md={12} sm={12}>
