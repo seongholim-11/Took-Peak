@@ -28,5 +28,7 @@ export default async function handler(req, res) {
             // 요청 메소드가 다를 때 에러 메시지 전송
             return res.status(405).json({ error: "Method not allowed" });
         }
+    }else{
+        return res.status(401).json({ error: "Unauthorized" });
     }
 }

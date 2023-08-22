@@ -181,6 +181,26 @@
         }
     }
 }
+
+/* search */
+.search{
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 20px;
+    .searchInput{
+        display: flex;
+        button{
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+    }
+}
+
+/* board */
+.board{
+    background-color: #f0f0f0;
+}
+
 @media screen and (max-width: 991px) {
     .userWrap {
         .user, .yetUser {
@@ -251,5 +271,8 @@
                 }
             }
         }
+    }
+    .search{
+        margin: 0 30px 30px;
     }
 }
