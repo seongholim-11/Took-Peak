@@ -1,14 +1,16 @@
-"use client";
-
 import { useEffect, useState } from "react";
+import { signOut } from "next-auth/react";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function User() {
     const [userInformation, setUserInformation] = useState({
-        avartar: "/image/main/user/avatar.png",
+        avatar: "/image/main/user/avatar.png",
         email: "123456@gmail.com",
-        name: "@Nickname",
+        name: "Nickname",
         specialize: "skill",
     });
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const userInf = async () => {
@@ -16,6 +18,7 @@ export default function User() {
                 const response = await fetch(`/api/get/loginuser`);
                 const data = await response.json();
                 setUserInformation(data);
+                setLoading(false);
             } catch (error) {
                 console.error("댓글 데이터를 가져오는 중 오류 발생:", error);
             }
@@ -26,14 +29,23 @@ export default function User() {
 
     return (
         <div className="user">
-            <img src={userInformation.avatar} alt="profil" />
-            <div className="userInf">
-                <div className="nickname">@{userInformation.name}</div>
-                <div className="email">{userInformation.email}</div>
-            </div>
-            <div className="skill">
-                <span>{userInformation.specialize}</span>
-            </div>
+            {loading ? (
+                <Spinner animation="border" size="lg" />
+            ) : (
+                <>
+                    <img src={userInformation.avatar} alt="profil" />
+                    <div className="userInf">
+                        <div className="nickname">@{userInformation.name}</div>
+                        <div className="email">{userInformation.email}</div>
+                    </div>
+                    <div className="specialize">
+                        <span>{userInformation.specialize}</span>
+                    </div>
+                    <button className="triangle" onClick={() => signOut()}>
+                        <span>LogOut</span>
+                    </button>
+                </>
+            )}
         </div>
     );
 }

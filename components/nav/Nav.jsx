@@ -43,12 +43,11 @@ function NavBar() {
               <NavDropdown.Item href="#action/3.1">개발 면접</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown.Divider />
-            <Nav.Link href="#features" className='signinup'>Sign Up</Nav.Link>
             {session.data == null ? 
-            <Nav.Link className='signinup' onClick={() => {
+            <Nav.Link className='signInOut' onClick={() => {
                     signIn();
                 }}>Login</Nav.Link> 
-                : <Nav.Link className='signinup' onClick={() => {
+                : <Nav.Link className='signInOut' onClick={() => {
                   signOut();
               }}>Logout</Nav.Link>}
             
