@@ -24,7 +24,7 @@ export default function Board() {
                 </Nav.Item>
               </Nav>
             </Col>
-            <Col>
+            <Col className='tabBody'>
               <Tab.Content>
                 <Tab.Pane eventKey="first">First tab content</Tab.Pane>
                 <Tab.Pane eventKey="second">Second tab content</Tab.Pane>
