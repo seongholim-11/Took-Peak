@@ -69,7 +69,7 @@ export default function page() {
                         <p>검색된 과정이 없습니다.</p>
                     )}
                 </div>
-                <Pagination page={page} setPage={setPage} searchPageCnt={searchPageCnt}/>
+                {searchResult.length > 0 ? <Pagination page={page} setPage={setPage} searchPageCnt={searchPageCnt}/> : <div></div>}
             </Container>
         </div>
     );
