@@ -13,7 +13,7 @@ export default function AcademySearch() {
         <div className="search">
             <Form>
                 <Form.Label htmlFor="search">
-                    <BiSearchAlt2 /> Academy Search
+                    <BiSearchAlt2 /> Program Search
                 </Form.Label>
                 <div className="searchInput">
                     <Form.Control

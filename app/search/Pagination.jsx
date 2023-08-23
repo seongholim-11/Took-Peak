@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import Pagination from "react-js-pagination";
 
 export default function SearchPagination({page, setPage, searchPageCnt}) {
@@ -7,6 +5,7 @@ export default function SearchPagination({page, setPage, searchPageCnt}) {
 
     const handlePageChange = (page) => {
         setPage(page);
+        // window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     return (
@@ -14,7 +13,7 @@ export default function SearchPagination({page, setPage, searchPageCnt}) {
             activePage={page}
             itemsCountPerPage={10}
             totalItemsCount={searchPageCnt}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={9}
             prevPageText={"‹"}
             nextPageText={"›"}
             onChange={handlePageChange}

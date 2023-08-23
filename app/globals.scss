@@ -29,6 +29,7 @@ body {
     }
 
     .container {
+        --bs-gutter-x: 0;
         .row {
             > * {
                 padding: 0;
