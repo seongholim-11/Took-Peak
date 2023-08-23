@@ -6,7 +6,8 @@ import useSearchStore from "@/stores/search";
 import Link from "next/link";
 
 export default function AcademySearch() {
-    const { setSearchValue, setSearchButtonTrue } = useSearchStore();
+    const { searchButton, setSearchValue, setSearchButtonTrue } =
+        useSearchStore();
 
     return (
         <div className="search">
@@ -25,7 +26,14 @@ export default function AcademySearch() {
                         }}
                     />
                     <Link href="/search">
-                        <Button variant="primary" onClick={()=> {setSearchButtonTrue()}}>SEARCH</Button>
+                        <Button
+                            variant="primary"
+                            onClick={() => {
+                                setSearchButtonTrue(searchButton);
+                            }}
+                        >
+                            SEARCH
+                        </Button>
                     </Link>
                 </div>
             </Form>

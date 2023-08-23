@@ -5,7 +5,7 @@ const useSearchStore = create((set) => ({
   setSearchValue: (e) => set({ searchValue: e.target.value }),
   searchButton: false,
   setSearchButtonFalse: () => set({ searchButton: false }),
-  setSearchButtonTrue: () => set({ searchButton: true }),
+  setSearchButtonTrue: (searchButton) => set({ searchButton: !searchButton }),
 }));
 
 export default useSearchStore;
