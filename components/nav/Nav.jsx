@@ -30,7 +30,7 @@ function NavBar() {
               <NavDropdown.Item href="#action/3.2">Notice</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Search" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">학원 검색</NavDropdown.Item>
+              <NavDropdown.Item href="/search">학원 검색</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Message Board" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">자유게시판</NavDropdown.Item>
