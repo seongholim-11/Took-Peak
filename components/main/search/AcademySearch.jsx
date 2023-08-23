@@ -1,16 +1,32 @@
-import { BiSearchAlt2 } from "react-icons/bi"; 
+import { BiSearchAlt2 } from "react-icons/bi";
 import React from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import useSearchStore from "@/stores/search";
+import Link from "next/link";
 
 export default function AcademySearch() {
+    const { setSearchValue, setSearchButtonTrue } = useSearchStore();
+
     return (
         <div className="search">
             <Form>
-                <Form.Label htmlFor="search"><BiSearchAlt2 /> Academy Search</Form.Label>
+                <Form.Label htmlFor="search">
+                    <BiSearchAlt2 /> Academy Search
+                </Form.Label>
                 <div className="searchInput">
-                    <Form.Control type="text" placeholder="Enter the name of the academy" id="search"/>
-                    <Button variant="primary">SEARCH</Button>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter the name of the academy"
+                        id="search"
+                        name="search"
+                        onChange={(e) => {
+                            setSearchValue(e);
+                        }}
+                    />
+                    <Link href="/search">
+                        <Button variant="primary" onClick={()=> {setSearchButtonTrue()}}>SEARCH</Button>
+                    </Link>
                 </div>
             </Form>
         </div>
