@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 export default function SearchResult({item, idx}) {
     return (
-        <div key={idx} className="searchResult">
+        <div className="searchResult">
             <div className="row1">
                 <div className="row1-1">
                     <span className="col1">{item.subTitle}</span>
@@ -20,7 +20,7 @@ export default function SearchResult({item, idx}) {
                 </div>
             </div>
             <div className="row2">
-                <Link href={`/search/${item.trprId}`}>
+                <Link href={`/search/${item.trprId}?trprDegr=${item.trprDegr}`}>
                     <Button variant="primary">more</Button>
                 </Link>
             </div>
