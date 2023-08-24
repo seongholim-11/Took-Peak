@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 
 import { BiArrowBack } from "react-icons/bi";
 import "./searchDetail.scss";
+import Map from "@/components/main/search/Map";
 
 export default function page(props) {
     const id = props.params.trprId;
@@ -51,7 +52,9 @@ export default function page(props) {
                         </Button>
                     </Link>
                 </div>
-                <div>page</div>
+                <div>
+                    <Map/>
+                </div>
             </div>
         </Container>
     );
