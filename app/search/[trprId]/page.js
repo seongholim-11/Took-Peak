@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Link from "next/link";
 
@@ -14,6 +14,8 @@ import Map from "@/components/main/search/Map";
 export default function page(props) {
     const id = props.params.trprId;
     const cnt = props.searchParams.trprDegr;
+
+    let [information, setInformation] = useState([])
 
     useEffect(() => {
         const programDetail = async () => {
@@ -32,7 +34,7 @@ export default function page(props) {
                     }
                 })
                 .then((data) => {
-                    console.log("🚀 ~ file: page.js:39 ~ .then ~ data:", data);
+                    setInformation(data.inst_base_info)
                 })
                 .catch((error) => {
                     console.error("Error:", error);
@@ -53,7 +55,7 @@ export default function page(props) {
                     </Link>
                 </div>
                 <div>
-                    <Map/>
+                    <Map addr1={information.addr1}/>
                 </div>
             </div>
         </Container>
