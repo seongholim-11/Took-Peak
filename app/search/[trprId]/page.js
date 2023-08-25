@@ -15,7 +15,29 @@ export default function page(props) {
     const id = props.params.trprId;
     const cnt = props.searchParams.trprDegr;
 
-    let [information, setInformation] = useState([])
+    let [information, setInformation] = useState([]);
+
+    const getAddress = () => {
+        const mapScript = document.createElement("script");
+
+        mapScript.async = true;
+        mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&libraries=services&autoload=false`;
+
+        document.head.appendChild(mapScript);
+
+        var geocoder = new window.kakao.maps.services.Geocoder();
+
+        var callback = function (result, status) {
+            console.log("🚀 ~ file: page.js:31 ~ callback ~ status:", status)
+            if (status === window.kakao.maps.services.Status.OK) {
+                console.log(result);
+            }
+        };
+
+        if (information.addr1) {
+            geocoder.addressSearch(`${information.addr1}`, callback);
+        }
+    };
 
     useEffect(() => {
         const programDetail = async () => {
@@ -28,13 +50,15 @@ export default function page(props) {
             })
                 .then((response) => {
                     if (response.ok) {
+                        
                         return response.json();
                     } else {
                         throw new Error("Network response was not ok.");
                     }
                 })
                 .then((data) => {
-                    setInformation(data.inst_base_info)
+                    setInformation(data.inst_base_info);
+                    getAddress();
                 })
                 .catch((error) => {
                     console.error("Error:", error);
@@ -55,7 +79,7 @@ export default function page(props) {
                     </Link>
                 </div>
                 <div>
-                    <Map addr1={information.addr1}/>
+                    <Map addr1={information.addr1} />
                 </div>
             </div>
         </Container>
