@@ -21,12 +21,50 @@
                 padding-bottom: 20px;
                 border-bottom: 5px solid #0070f3;
             }
-            .content {
-                table {
-                    tr {
-                    }
-                    td {
-
+        }
+        .comment {
+            h4 {
+                margin: 20px 0 10px;
+            }
+            .inputComment {
+                margin: 20px 0;
+                display: flex;
+                height: 50px;
+                input {
+                    margin-left: auto;
+                    border: 1px solid #0070f3;
+                    flex-basis: 90%;
+                    border-radius: 10px 0 0 10px;
+                }
+                button {
+                    flex-basis: 10%;
+                    border: none;
+                    background-color: #0070f3;
+                    color: #fff;
+                    flex-basis: 10%;
+                    border-radius: 0px 10px 10px 0px;
+                }
+            }
+            .commentWrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 50%;
+                max-width: 650px;
+                min-height: 100px;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 10px 10px 0px 10px;
+                margin-bottom: 10px;
+                margin-left: auto;
+                .comment {
+                }
+                .author {
+                    font-size: 0.8rem;
+                    .time {
+                        margin-left: 10px;
+                        font-size: 0.7rem;
+                        color: #9d9d9d;
                     }
                 }
             }
