@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import { BsFillSendFill } from "react-icons/bs"; 
+
+import React, { useState, useEffect } from "react";
+import AllComment from "./AllComment";
 
 export default function Comment({ id, cnt }) {
     let [comment, setComment] = useState("");
+    let [allComment, setAllComment] = useState([]);
     let [errorMessage, setErrorMessage] = useState("");
 
     const parent = id + cnt;
@@ -30,16 +34,39 @@ export default function Comment({ id, cnt }) {
         }
     };
 
+    useEffect(() => {
+        const getComment = async () => {
+            try {
+                const response = await fetch(
+                    `/api/get/comment?parent=${parent}`
+                );
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setAllComment(data);
+                } else {
+                    throw new Error("Network response was not ok.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        };
+
+        getComment();
+    }, []);
     return (
-        <div>
-            <div>댓글목록</div>
-            <input
-                onChange={(e) => {
-                    setComment(e.target.value);
-                }}
-                value={comment}
-            />
-            <button onClick={handleSubmit}>댓글전송</button>
+        <div className="comment">
+            <h4>훈련과정 후기</h4>
+            <AllComment allComment={allComment} />
+            <div className="inputComment">
+                <input
+                    onChange={(e) => {
+                        setComment(e.target.value);
+                    }}
+                    value={comment}
+                />
+                <button onClick={handleSubmit}><BsFillSendFill /></button>
+            </div>
             {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         </div>
     );

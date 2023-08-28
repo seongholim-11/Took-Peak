@@ -7,6 +7,25 @@ export default async function handler(req, res) {
         try {
             let session = await getServerSession(req, res, authOptions);
 
+            const currentDate = new Date(); // 현재 시간 정보 생성
+            const formattedDate = `${currentDate.getFullYear()}-${(
+                currentDate.getMonth() + 1
+            )
+                .toString()
+                .padStart(2, "0")}-${currentDate
+                .getDate()
+                .toString()
+                .padStart(2, "0")} ${currentDate
+                .getHours()
+                .toString()
+                .padStart(2, "0")}:${currentDate
+                .getMinutes()
+                .toString()
+                .padStart(2, "0")}:${currentDate
+                .getSeconds()
+                .toString()
+                .padStart(2, "0")}`;
+
             if (req.method === "POST") {
                 if (session !== null) {
                     const body = JSON.parse(req.body);
@@ -15,7 +34,8 @@ export default async function handler(req, res) {
                     await db.collection("comments").insertOne({
                         comment: body.comment,
                         parent: body.parent,
-                        author: session.user.email,
+                        author: session.user.name,
+                        createdAt: formattedDate,
                     });
                     res.status(200).json("저장완료");
                 } else {

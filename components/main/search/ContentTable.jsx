@@ -26,10 +26,6 @@ export default function ContentTable({ information, id, cnt }) {
                     }
                 })
                 .then((data) => {
-                    console.log(
-                        "🚀 ~ file: ContentTable.jsx:32 ~ .then ~ data:",
-                        data
-                    );
                     setDate(data[0]);
                 })
                 .catch((error) => {
