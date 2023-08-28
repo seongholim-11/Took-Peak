@@ -30,6 +30,11 @@ export default async function handler(req, res) {
                 if (session !== null) {
                     const body = JSON.parse(req.body);
 
+                    if (body.comment.trim() === "") {
+                        res.status(400).json("댓글 내용을 작성해주세요.");
+                        return;
+                    }
+
                     let db = (await connectDB).db("forum");
                     await db.collection("comments").insertOne({
                         comment: body.comment,

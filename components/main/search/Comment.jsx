@@ -63,11 +63,11 @@ export default function Comment({ id, cnt }) {
                     onChange={(e) => {
                         setComment(e.target.value);
                     }}
+                    placeholder={errorMessage ? errorMessage : comment}
                     value={comment}
                 />
                 <button onClick={handleSubmit}><BsFillSendFill /></button>
             </div>
-            {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         </div>
     );
 }
