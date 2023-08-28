@@ -35,6 +35,10 @@
                     border: 1px solid #0070f3;
                     flex-basis: 90%;
                     border-radius: 10px 0 0 10px;
+                    padding: 5px 10px;
+                    &::placeholder {
+                        color: red;
+                      }
                 }
                 button {
                     flex-basis: 10%;
@@ -57,8 +61,6 @@
                 border-radius: 10px 10px 0px 10px;
                 margin-bottom: 10px;
                 margin-left: auto;
-                .comment {
-                }
                 .author {
                     font-size: 0.8rem;
                     .time {
