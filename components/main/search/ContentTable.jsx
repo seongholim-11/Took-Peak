@@ -1,9 +1,50 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 
-export default function ContentTable({information}) {
+export default function ContentTable({ information, id, cnt }) {
+    const price = Number(information.perTrco);
+    const convertedPrice = price.toLocaleString("ko-KR");
+
+    const [date, setDate] = useState([]);
+
+    useEffect(() => {
+        const searchDate = async () => {
+            fetch("/api/post/searchDate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id, cnt }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Network response was not ok.");
+                    }
+                })
+                .then((data) => {
+                    console.log(
+                        "🚀 ~ file: ContentTable.jsx:32 ~ .then ~ data:",
+                        data
+                    );
+                    setDate(data[0]);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        };
+
+        searchDate();
+    }, []);
+
+    console.log("🚀 ~ file: ContentTable.jsx:11 ~ ContentTable ~ date:", date);
+
     return (
         <div className="detail">
-            <h2>{information.trprNm}</h2>
+            <h2>{`${information.trprNm}(${information.trprDegr})`}</h2>
             <div className="content">
                 <Table bordered hover>
                     <tbody>
@@ -23,10 +64,6 @@ export default function ContentTable({information}) {
                             </td>
                         </tr>
                         <tr>
-                            <td>전화번호</td>
-                            <td>{information.trprChapTel}</td>
-                        </tr>
-                        <tr>
                             <td> NCS 직무분류</td>
                             <td>
                                 {`${information.ncsNm}(${information.ncsCd})`}
@@ -39,8 +76,24 @@ export default function ContentTable({information}) {
                             </td>
                         </tr>
                         <tr>
+                            <td>담당자 성명</td>
+                            <td>{information.trprChap}</td>
+                        </tr>
+                        <tr>
+                            <td>담당자 이메일</td>
+                            <td>{information.trprChapEmail}</td>
+                        </tr>
+                        <tr>
+                            <td>담당자 전화번호</td>
+                            <td>{information.trprChapTel}</td>
+                        </tr>
+                        <tr>
+                            <td> 훈련기간</td>
+                            <td>{`${date.trStaDt} ~ ${date.trEndDt}`}</td>
+                        </tr>
+                        <tr>
                             <td> 훈련비</td>
-                            <td>{`${(information.perTrco).toLocaleString('ko-KR')}원`}</td>
+                            <td>{convertedPrice}원</td>
                         </tr>
                     </tbody>
                 </Table>

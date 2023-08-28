@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 
 import Button from "react-bootstrap/Button";
 
-export default function SearchResult({item, idx}) {
+export default function SearchResult({ item, idx }) {
     return (
         <div className="searchResult">
             <div className="row1">

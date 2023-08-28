@@ -35,7 +35,6 @@ export default function page() {
                     }
                 })
                 .then((data) => {
-                    console.log("🚀 ~ file: page.js:39 ~ .then ~ data:", data);
                     setSearchResult(data.srchList);
                     setSearchPageCnt(data.scn_cnt);
                     setSearchButtonFalse();
@@ -48,7 +47,7 @@ export default function page() {
             programSearch();
         }
     }, [searchButton, page]);
-
+    
     return (
         <div>
             <Container>
