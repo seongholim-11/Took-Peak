@@ -7,15 +7,20 @@ import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
+
 import { BiArrowBack } from "react-icons/bi";
 import "./searchDetail.scss";
 import Map from "@/components/main/search/Map";
+import LoadingTable from "@/components/main/search/LoadingTable";
+import ContentTable from "@/components/main/search/ContentTable";
 
 export default function page(props) {
     const id = props.params.trprId;
     const cnt = props.searchParams.trprDegr;
 
     let [information, setInformation] = useState([]);
+    // 로딩 유무
+    const [loading, setLoading] = useState(true);
 
     const getAddress = () => {
         const mapScript = document.createElement("script");
@@ -28,7 +33,7 @@ export default function page(props) {
         var geocoder = new window.kakao.maps.services.Geocoder();
 
         var callback = function (result, status) {
-            console.log("🚀 ~ file: page.js:31 ~ callback ~ status:", status)
+            console.log("🚀 ~ file: page.js:31 ~ callback ~ status:", status);
             if (status === window.kakao.maps.services.Status.OK) {
                 console.log(result);
             }
@@ -50,7 +55,7 @@ export default function page(props) {
             })
                 .then((response) => {
                     if (response.ok) {
-                        
+                        setLoading(false);
                         return response.json();
                     } else {
                         throw new Error("Network response was not ok.");
@@ -68,6 +73,7 @@ export default function page(props) {
         programDetail();
     }, []);
 
+    console.log(information)
     return (
         <Container>
             <div className="searchDetail">
@@ -78,9 +84,8 @@ export default function page(props) {
                         </Button>
                     </Link>
                 </div>
-                <div>
-                    <Map addr1={information.addr1} />
-                </div>
+                <div>{/* <Map addr1={information.addr1} /> */}</div>
+                {loading ? <LoadingTable /> : <ContentTable information={information}/>}
             </div>
         </Container>
     );
