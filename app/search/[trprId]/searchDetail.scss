@@ -1,8 +1,35 @@
 .container {
     .searchDetail {
-        .btnWrap{
+        position: relative;
+
+        .btnWrap {
             width: 100%;
             margin: 30px 0;
+        }
+        .loadingTable {
+            h2 {
+                padding: 9px 0 20px;
+                margin: 0 9px;
+                border-bottom: 5px solid #0070f3;
+            }
+            .placeholder {
+                height: 25px;
+            }
+        }
+        .detail {
+            h2 {
+                padding-bottom: 20px;
+                border-bottom: 5px solid #0070f3;
+            }
+            .content {
+                table {
+                    tr {
+                    }
+                    td {
+
+                    }
+                }
+            }
         }
     }
 }
@@ -19,5 +46,4 @@
             margin: 0 30px;
         }
     }
-    
 }
