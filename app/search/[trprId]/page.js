@@ -7,12 +7,12 @@ import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-
 import { BiArrowBack } from "react-icons/bi";
 import "./searchDetail.scss";
 // import Map from "@/components/main/search/Map";
 import LoadingTable from "@/components/main/search/LoadingTable";
 import ContentTable from "@/components/main/search/ContentTable";
+import Comment from "@/components/main/search/Comment";
 
 export default function page(props) {
     const id = props.params.trprId;
@@ -73,7 +73,6 @@ export default function page(props) {
         programDetail();
     }, []);
 
-    console.log(information)
     return (
         <Container>
             <div className="searchDetail">
@@ -85,7 +84,12 @@ export default function page(props) {
                     </Link>
                 </div>
                 <div>{/* <Map addr1={information.addr1} /> */}</div>
-                {loading ? <LoadingTable /> : <ContentTable information={information} id={id} cnt={cnt}/>}
+                {loading ? (
+                    <LoadingTable />
+                ) : (
+                    <ContentTable information={information} id={id} cnt={cnt} />
+                )}
+                <Comment id={id} cnt={cnt}/>
             </div>
         </Container>
     );

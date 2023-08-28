@@ -40,8 +40,6 @@ export default function ContentTable({ information, id, cnt }) {
         searchDate();
     }, []);
 
-    console.log("🚀 ~ file: ContentTable.jsx:11 ~ ContentTable ~ date:", date);
-
     return (
         <div className="detail">
             <h2>{`${information.trprNm}(${information.trprDegr})`}</h2>
