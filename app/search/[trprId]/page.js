@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 
 import { BiArrowBack } from "react-icons/bi";
 import "./searchDetail.scss";
-import Map from "@/components/main/search/Map";
+// import Map from "@/components/main/search/Map";
 import LoadingTable from "@/components/main/search/LoadingTable";
 import ContentTable from "@/components/main/search/ContentTable";
 
@@ -63,7 +63,7 @@ export default function page(props) {
                 })
                 .then((data) => {
                     setInformation(data.inst_base_info);
-                    getAddress();
+                    // getAddress();
                 })
                 .catch((error) => {
                     console.error("Error:", error);
@@ -85,7 +85,7 @@ export default function page(props) {
                     </Link>
                 </div>
                 <div>{/* <Map addr1={information.addr1} /> */}</div>
-                {loading ? <LoadingTable /> : <ContentTable information={information}/>}
+                {loading ? <LoadingTable /> : <ContentTable information={information} id={id} cnt={cnt}/>}
             </div>
         </Container>
     );

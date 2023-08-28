@@ -4,16 +4,16 @@ export default async function handler(req, res) {
             const { id, cnt } = req.body;
 
             const response = await fetch(
-                `https://www.hrd.go.kr/hrdp/api/apipo/APIPO0102T.do?srchTrprId=${id}&srchTorgId=default&outType=2&srchTrprDegr=${cnt}&authKey=OgGAJP6x3EPDrhHJDsC2QEokrp1JyegK&returnType=JSON&srchTraPattern=N1&srchPart=1&apiRequstPageUrlAdres=/jsp/HRDP/HRDPO00/HRDPOA60/HRDPOA60_2.jsp&apiRequstIp=115.91.70.236`
+                `https://www.hrd.go.kr/hrdp/api/apipo/APIPO0103T.do?srchTrprId=${id}&outType=2&srchTrprDegr=${cnt}&authKey=OgGAJP6x3EPDrhHJDsC2QEokrp1JyegK&returnType=JSON&srchTraPattern=N1&srchPart=2&apiRequstPageUrlAdres=/jsp/HRDP/HRDPO00/HRDPOA60/HRDPOA60_3.jsp&apiRequstIp=115.91.70.236`
             );
 
             if (response.ok) {
                 const data = await response.json();
-                console.log("POST Response:", data);
+                // console.log("POST Response:", data);
 
                 // Additional parsing to access the necessary data
                 const parsedData = JSON.parse(data.returnJSON);
-                console.log("Parsed Data:", parsedData);
+                // console.log("Parsed Data:", parsedData);
 
                 res.status(200).json(parsedData);
             } else {
