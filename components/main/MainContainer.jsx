@@ -15,10 +15,15 @@ import "../main/MainContainer.scss";
 import Board from "./board/board";
 import Box2x1 from "./dev/Box2x1";
 import Box1x1 from "./dev/Box1x1";
+import Footer from "./footer/Footer";
 
 export default function MainContainer() {
     const box1 = [
-        { img: "/image/main/dev/security.png", title: "개발 팁", content: "개발과 취업에 필요한 사이트 및 정보" },
+        {
+            img: "/image/main/dev/security.png",
+            title: "개발 팁",
+            content: "개발과 취업에 필요한 사이트 및 정보",
+        },
         {
             img: "/image/main/dev/location.png",
             title: "개발 기술",
@@ -29,7 +34,11 @@ export default function MainContainer() {
             title: "CS",
             content: "개발을 위한 기초 컴퓨터 지식",
         },
-        { img: "/image/main/dev/user.png", title: "개발 면접", content: "기술 면접에 자주 나오는 질문과 답변 모음" },
+        {
+            img: "/image/main/dev/user.png",
+            title: "개발 면접",
+            content: "기술 면접에 자주 나오는 질문과 답변 모음",
+        },
     ];
 
     // 로그인 유무를 위한 함수
@@ -67,7 +76,9 @@ export default function MainContainer() {
                 })}
             </Row>
             <Row>
-                <Col>5-1</Col>
+                <Col>
+                    <Footer />
+                </Col>
             </Row>
         </Container>
     );
