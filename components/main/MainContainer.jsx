@@ -75,11 +75,6 @@ export default function MainContainer() {
                     );
                 })}
             </Row>
-            <Row>
-                <Col>
-                    <Footer />
-                </Col>
-            </Row>
         </Container>
     );
 }
