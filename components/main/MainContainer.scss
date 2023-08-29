@@ -65,7 +65,7 @@
                 }
             }
         }
-        .triangle{
+        .triangle {
             width: 200px;
             height: 200px;
             position: absolute;
@@ -75,10 +75,10 @@
             transform: rotate(45deg);
             display: flex;
             align-items: center;
-            span{
-                transform: rotate(-90deg); 
+            span {
+                transform: rotate(-90deg);
                 color: #fff;
-                font-weight: bold; 
+                font-weight: bold;
             }
         }
     }
@@ -169,10 +169,10 @@
                 .specialize {
                     display: flex;
                     flex-wrap: wrap;
-                    input{
+                    input {
                         margin-right: 5px;
                     }
-                    label{
+                    label {
                         margin-right: 10px;
                         color: #7d7d7d;
                     }
@@ -183,14 +183,14 @@
 }
 
 /* search */
-.search{
+.search {
     background-color: #f0f0f0;
     border-radius: 20px;
     padding: 40px 20px;
     margin-bottom: 30px;
-    .searchInput{
+    .searchInput {
         display: flex;
-        button{
+        button {
             border-radius: 10px;
             margin-left: 10px;
         }
@@ -198,15 +198,47 @@
 }
 
 /* board */
-.board{
+.board {
     background-color: #f0f0f0;
     padding: 60px 30px 30px;
     border-radius: 20px;
 }
 
+.box2 {
+    display: flex;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    .box2Title {
+        flex-basis: 70%;
+        h2 {
+            background: -webkit-linear-gradient(45deg, #bbb, #0070f3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sticker {
+            width: 85%;
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 0.8;
+            margin-top: 30px;
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
+    .box2Img {
+        flex-basis: 30%;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .userWrap {
-        .user, .yetUser {
+        .user,
+        .yetUser {
             margin: 30px 0px;
         }
         .calender {
@@ -235,7 +267,8 @@
 
 @media screen and (max-width: 575px) {
     .userWrap {
-        .user, .yetUser {
+        .user,
+        .yetUser {
             height: 280px;
             margin: 30px 30px 0px;
             .userInf {
@@ -275,10 +308,22 @@
             }
         }
     }
-    .search{
+    .search {
         margin: 0 30px 30px;
     }
-    .board{
+    .board {
         margin: 0 30px 30px;
+    }
+    .box2 {
+        display: block;
+        margin: 0 30px 30px;
+        .box2Title {
+            .sticker {
+                width: 100%;
+            }
+        }
+        .box2Img {
+            display: none;
+        }
     }
 }
