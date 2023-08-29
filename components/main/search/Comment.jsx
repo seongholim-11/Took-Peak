@@ -1,16 +1,14 @@
-"use client";
-
-import { BsFillSendFill } from "react-icons/bs"; 
-
 import React, { useState, useEffect } from "react";
+import { BsFillSendFill } from "react-icons/bs";
 import AllComment from "./AllComment";
 
 export default function Comment({ id, cnt }) {
-    let [comment, setComment] = useState("");
-    let [allComment, setAllComment] = useState([]);
-    let [errorMessage, setErrorMessage] = useState("");
-
     const parent = id + cnt;
+
+    const [comment, setComment] = useState("");
+    const [allComment, setAllComment] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [updateComment, setUpdateComment] = useState(false);
 
     const handleSubmit = async () => {
         try {
@@ -20,11 +18,10 @@ export default function Comment({ id, cnt }) {
             });
 
             if (response.ok) {
-                // 댓글 전송 성공
                 setComment("");
                 setErrorMessage("");
+                setUpdateComment(true);
             } else {
-                // 댓글 전송 실패
                 const errorData = await response.json();
                 setErrorMessage(errorData);
             }
@@ -37,13 +34,12 @@ export default function Comment({ id, cnt }) {
     useEffect(() => {
         const getComment = async () => {
             try {
-                const response = await fetch(
-                    `/api/get/comment?parent=${parent}`
-                );
+                const response = await fetch(`/api/get/comment?parent=${parent}`);
 
                 if (response.ok) {
                     const data = await response.json();
                     setAllComment(data);
+                    setUpdateComment(false);
                 } else {
                     throw new Error("Network response was not ok.");
                 }
@@ -53,20 +49,21 @@ export default function Comment({ id, cnt }) {
         };
 
         getComment();
-    }, []);
+    }, [updateComment]);
+
     return (
         <div className="comment">
             <h4>훈련과정 후기</h4>
             <AllComment allComment={allComment} />
             <div className="inputComment">
                 <input
-                    onChange={(e) => {
-                        setComment(e.target.value);
-                    }}
-                    placeholder={errorMessage ? errorMessage : comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder={errorMessage || comment}
                     value={comment}
                 />
-                <button onClick={handleSubmit}><BsFillSendFill /></button>
+                <button onClick={handleSubmit}>
+                    <BsFillSendFill />
+                </button>
             </div>
         </div>
     );
