@@ -33,7 +33,6 @@ export default function page(props) {
         var geocoder = new window.kakao.maps.services.Geocoder();
 
         var callback = function (result, status) {
-            console.log("🚀 ~ file: page.js:31 ~ callback ~ status:", status);
             if (status === window.kakao.maps.services.Status.OK) {
                 console.log(result);
             }

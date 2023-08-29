@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import useSearchStore from "@/stores/search";
 import Link from "next/link";
 
-import './search.scss'
+import '../search.scss'
 
 export default function AcademySearch() {
     const { searchButton, setSearchValue, setSearchButtonTrue } =

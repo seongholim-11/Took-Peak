@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 
-import './board.scss'
+import './mainboard.scss'
 
 export default function Board() {
   return (

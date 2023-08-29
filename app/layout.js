@@ -1,6 +1,7 @@
 "use client";
 
-import Footer from "@/components/main/footer/Footer";
+
+import Footer from "@/components/footer/Footer";
 import "./globals.scss";
 import NavBar from "@/components/nav/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
