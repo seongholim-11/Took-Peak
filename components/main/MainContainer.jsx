@@ -13,6 +13,8 @@ import { useSession } from "next-auth/react";
 
 import "../main/MainContainer.scss";
 import Board from "./board/board";
+import Box2x1 from "./dev/Box2x1";
+import Box1x1 from "./dev/Box1x1";
 
 export default function MainContainer() {
     // 로그인 유무를 위한 함수
@@ -28,26 +30,30 @@ export default function MainContainer() {
                 </Col>
             </Row>
             <Row>
-                <Col><AcademySearch/></Col>
+                <Col>
+                    <AcademySearch />
+                </Col>
             </Row>
             <Row>
-                <Col><Board/></Col>
+                <Col>
+                    <Board />
+                </Col>
             </Row>
             <Row>
                 <Col lg={8} md={12} sm={12}>
-                    4-1
+                    <Box2x1 />
                 </Col>
                 <Col lg={4} sm={6}>
-                    4-2
+                    <Box1x1 />
                 </Col>
                 <Col lg={4} sm={6}>
-                    4-3
+                    <Box1x1 />
                 </Col>
                 <Col lg={4} sm={6}>
-                    4-4
+                    <Box1x1 />
                 </Col>
                 <Col lg={4} sm={6}>
-                    4-5
+                    <Box1x1 />
                 </Col>
             </Row>
             <Row>
