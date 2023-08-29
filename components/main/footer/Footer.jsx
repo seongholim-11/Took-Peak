@@ -5,6 +5,8 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import { FaMountain } from "react-icons/fa";
 
+import './footer.scss'
+
 export default function Footer() {
     return (
         <Container>

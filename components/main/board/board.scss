@@ -1,0 +1,19 @@
+/* board */
+.board {
+    background-color: #f0f0f0;
+    padding: 60px 30px 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 991px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 575px) {
+    .board {
+        margin: 0 30px 30px;
+    }
+}

@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import Button from "react-bootstrap/Button";
 
+import './search.scss'
+
 export default function SearchResult({ item, idx }) {
     return (
         <div className="searchResult">

@@ -9,6 +9,8 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 
+import './user.scss'
+
 export default function notLoginUser() {
     const [show, setShow] = useState(false);
     const [src, setSrc] = useState("/image/main/user/Avatars.png");

@@ -1,5 +1,7 @@
 import React from "react";
 
+import './dev.scss'
+
 export default function Box1x1({ item, idx }) {
     return (
         <div className={`box1 nth${idx}`}>

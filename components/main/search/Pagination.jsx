@@ -1,5 +1,7 @@
 import Pagination from "react-js-pagination";
 
+import './search.scss'
+
 export default function SearchPagination({page, setPage, searchPageCnt}) {
 
 

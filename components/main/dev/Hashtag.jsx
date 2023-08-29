@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './dev.scss'
+
 function Hashtag() {
   const hashtags = ['#Interview', '#Skill', '#Develop'];
 

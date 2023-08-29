@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
 import Spinner from "react-bootstrap/Spinner";
 
+import './user.scss'
+
 export default function User() {
     // 로그인한 유저 정보
     const [userInformation, setUserInformation] = useState({

@@ -3,6 +3,8 @@ import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 
+import './board.scss'
+
 export default function Board() {
   return (
     <div className='board'>
@@ -11,16 +13,16 @@ export default function Board() {
             <Col sm={3}>
               <Nav variant="pills" className="flex-column">
                 <Nav.Item>
-                  <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                  <Nav.Link eventKey="first">자유</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                  <Nav.Link eventKey="second">협업</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="third">Tab 3</Nav.Link>
+                  <Nav.Link eventKey="third">포트폴리오</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="fourth">Tab 4</Nav.Link>
+                  <Nav.Link eventKey="fourth">질문</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
