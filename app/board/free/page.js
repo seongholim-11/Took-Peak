@@ -1,5 +1,6 @@
-import Title from '@/components/main/board/Title'
-import List from '@/components/main/board/List'
+import Title from '@/components/board/Title'
+import List from '@/components/board/List'
+import Pagination from '@/components/board/Pagination'
 import React from 'react'
 
 export default function page() {
@@ -7,6 +8,7 @@ export default function page() {
     <div>
         <Title title={'자유게시판'}/>
         <List/>
+        <Pagination/>
     </div>
   )
 }

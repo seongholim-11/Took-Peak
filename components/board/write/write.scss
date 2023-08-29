@@ -1,0 +1,14 @@
+form{
+    margin: 30px 0;
+    >div{
+        margin-bottom: 20px;
+    }
+    .titleNsubmit{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .title{
+        margin-bottom: 5px;
+    }
+}
