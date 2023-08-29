@@ -2,14 +2,14 @@
 
 import Container from "react-bootstrap/Container";
 
-import AcademySearch from "@/components/main/search/AcademySearch";
+import AcademySearch from "@/components/search/main/AcademySearch";
 import useSearchStore from "@/stores/search";
 
 import React, { useEffect, useState } from "react";
 
 import "./search.scss";
-import SearchResult from "../../components/main/search/SearchResult";
-import Pagination from "../../components/main/search/Pagination";
+import SearchResult from "../../components/search/SearchResult";
+import Pagination from "../../components/search/Pagination";
 
 export default function page() {
     const { searchValue, searchButton, setSearchButtonFalse } =
