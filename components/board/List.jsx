@@ -11,6 +11,7 @@ export default function List() {
             <Table striped bordered hover>
                 <tbody>
                     <tr>
+                        <td>목록수</td>
                         <td>제목</td>
                         <td>글 발행 일</td>
                         <td>글쓴이</td>

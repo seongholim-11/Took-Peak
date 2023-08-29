@@ -1,7 +1,7 @@
 "use client";
 
-import LoginUser from "@/components/main/user/LoginUser";
-import NotLoginUser from "@/components/main/user/NotLoginUser";
+import LoginUser from "@/components/user/LoginUser";
+import NotLoginUser from "@/components/user/NotLoginUser";
 import Calender from "./user/Calender";
 import AcademySearch from "./search/main/AcademySearch";
 
@@ -11,7 +11,7 @@ import Col from "react-bootstrap/Col";
 
 import { useSession } from "next-auth/react";
 
-import "../main/MainContainer.scss";
+import "./MainContainer.scss";
 import Board from "./board/main/Board";
 import Box2x1 from "./dev/Box2x1";
 import Box1x1 from "./dev/Box1x1";
