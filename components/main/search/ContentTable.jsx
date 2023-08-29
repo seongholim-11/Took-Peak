@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 
+import './search.scss'
+
 export default function ContentTable({ information, id, cnt }) {
     const price = Number(information.perTrco);
     const convertedPrice = price.toLocaleString("ko-KR");

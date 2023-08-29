@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BsFillSendFill } from "react-icons/bs";
 import AllComment from "./AllComment";
 
+import './search.scss'
+
 export default function Comment({ id, cnt }) {
     const parent = id + cnt;
 

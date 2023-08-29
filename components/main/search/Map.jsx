@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import './search.scss'
+
 function Map({ addr1 }) {
 
   

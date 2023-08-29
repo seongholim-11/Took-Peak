@@ -1,5 +1,7 @@
 import React from "react";
 
+import './search.scss'
+
 export default function AllComment({ allComment }) {
     return (
         <div>

@@ -1,6 +1,8 @@
 import Placeholder from "react-bootstrap/Placeholder";
 import Table from "react-bootstrap/Table";
 
+import './search.scss'
+
 export default function LoadingTable() {
     return (
         <div className="loadingTable">
