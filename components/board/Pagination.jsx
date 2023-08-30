@@ -1,10 +1,8 @@
-'use client'
+"use client";
 
 import Pagination from "react-js-pagination";
 
-export default function SearchPagination({page, setPage, searchPageCnt}) {
-
-
+export default function SearchPagination({ page, setPage, searchPageCnt }) {
     const handlePageChange = (page) => {
         setPage(page);
     };

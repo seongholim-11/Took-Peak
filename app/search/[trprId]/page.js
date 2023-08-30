@@ -10,9 +10,9 @@ import Button from "react-bootstrap/Button";
 import { BiArrowBack } from "react-icons/bi";
 import "./searchDetail.scss";
 // import Map from "@/components/main/search/Map";
-import LoadingTable from "@/components/main/search/LoadingTable";
-import ContentTable from "@/components/main/search/ContentTable";
-import Comment from "@/components/main/search/Comment";
+import LoadingTable from "@/components/search/LoadingTable";
+import ContentTable from "@/components/search/ContentTable";
+import Comment from "@/components/search/Comment";
 
 export default function page(props) {
     const id = props.params.trprId;
