@@ -18,21 +18,22 @@ export default async function handler(req, res) {
                 .toString()
                 .padStart(2, "0")}`;
 
-            if (req.method === "POST") {
-                if (session !== null) {
-                    const body = JSON.parse(req.body);
-                    console.log("🚀 ~ file: upload.js:24 ~ handler ~ body:", body)
+            if (session !== null) {
+                const body = JSON.parse(req.body);
+                console.log("🚀 ~ file: upload.js:24 ~ handler ~ body:", body);
 
-                    let db = (await connectDB).db("forum");
-                    await db.collection("post").insertOne({
-                        body,
-                        author: session.user.name,
-                        createdAt: formattedDate,
-                    });
-                    res.status(200).json('글이 업로드 되었습니다.')
-                } else {
-                    res.status(401).json("로그인 후에 글 작성이 가능합니다.");
-                }
+                let db = (await connectDB).db("forum");
+                await db.collection("post").insertOne({
+                    title: body.title,
+                    content: body.content,
+                    board: body.board,
+                    author: session.user.name,
+                    createdAt: formattedDate,
+                    view: body.view,
+                });
+                res.status(200).json("글이 업로드 되었습니다.");
+            } else {
+                res.status(401).json("로그인 후에 글 작성이 가능합니다.");
             }
         } catch (error) {
             console.error("Error:", error);
@@ -40,5 +41,5 @@ export default async function handler(req, res) {
         }
     } else {
         res.status(405).json("허용되지 않은 메소드입니다.");
-    } 
+    }
 }
