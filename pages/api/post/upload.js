@@ -29,7 +29,7 @@ export default async function handler(req, res) {
                         author: session.user.name,
                         createdAt: formattedDate,
                     });
-                    res.redirect(302, `/board/${body.board}`)
+                    res.status(200).json('글이 업로드 되었습니다.')
                 } else {
                     res.status(401).json("로그인 후에 글 작성이 가능합니다.");
                 }
