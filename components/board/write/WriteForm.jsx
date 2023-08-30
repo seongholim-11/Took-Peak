@@ -7,10 +7,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import "./write.scss";
+import { useRouter } from "next/navigation";
 
 function WriteForm() {
     const [src, setSrc] = useState("");
     const [selectValue, setSelectValue] = useState("");
+
+    const router = useRouter();
 
     const changeValue = (e) => {
         setSelectValue(e.target.value);
@@ -48,6 +51,7 @@ function WriteForm() {
             // 필요한 처리를 수행
             const successMessage = await response.json();
             alert(successMessage);
+            router.push(`/board/${board}`)
         } else {
             // 서버로부터 오류 응답을 받음
             const errorResponse = await response.json();
