@@ -11,11 +11,9 @@ import Col from "react-bootstrap/Col";
 
 import { useSession } from "next-auth/react";
 
-import "./MainContainer.scss";
 import Board from "./board/main/Board";
 import Box2x1 from "./dev/Box2x1";
 import Box1x1 from "./dev/Box1x1";
-import Footer from "./footer/Footer";
 
 export default function MainContainer() {
     const box1 = [
