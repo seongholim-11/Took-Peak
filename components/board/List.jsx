@@ -22,11 +22,13 @@ export default function List() {
         const getBoard = async () => {
             try {
                 const response = await fetch(
-                    `/api/get/boardlist?board=${result}`
+                    `/api/get/boardlist?board=${result}&page=${page}`
                 );
                 if (response.ok) {
                     const data = await response.json();
-                    setAllList(data);
+                    setAllList(data.result);
+                    const dataCnt = data.dbCnt;
+                    setSearchPageCnt(dataCnt);
                 } else {
                     throw new Error("Network response was not ok.");
                 }
@@ -35,43 +37,50 @@ export default function List() {
             }
         };
         getBoard();
-    }, []);
+    }, [page]);
 
     return (
         <Container className="boardlist">
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td>제목</td>
-                        <td>업로드 날짜</td>
-                        <td>글쓴이</td>
-                        <td>조회수</td>
-                    </tr>
-                </thead>
-                {allList.map((item, idx) => {
-                    return (
-                        <tbody key={idx}>
-                            <tr>
-                                <td>{idx}</td>
-                                <td>
-                                    <Link href={`/board/free/${item._id}`}>
-                                        {item.title}
-                                    </Link>
-                                </td>
-                                <td>{item.createdAt}</td>
-                                <td>{item.author}</td>
-                                <td>{item.view}</td>
-                            </tr>
-                        </tbody>
-                    );
-                })}
-            </Table>
-            <Pagination
-                page={page}
-                setPage={setPage}
-                searchPageCnt={searchPageCnt}
-            />
+            <div>
+                <Table hover>
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>제목</td>
+                            <td>업로드 날짜</td>
+                            <td>글쓴이</td>
+                            <td>조회수</td>
+                        </tr>
+                    </thead>
+                    {allList
+                        .slice(0)
+                        .reverse()
+                        .map((item, idx) => {
+                            return (
+                                <tbody key={idx}>
+                                    <tr>
+                                        <td className="td1">
+                                            {idx + (page - 1) * 10 + 1}
+                                        </td>
+                                        <td className="td2">
+                                            <Link href={`/board/free/${item._id}`}>
+                                                {item.title}
+                                            </Link>
+                                        </td>
+                                        <td className="td3">{item.createdAt}</td>
+                                        <td className="td4">{item.author}</td>
+                                        <td className="td5">{item.view}</td>
+                                    </tr>
+                                </tbody>
+                            );
+                        })}
+                </Table>
+                <Pagination
+                    page={page}
+                    setPage={setPage}
+                    searchPageCnt={searchPageCnt}
+                />
+            </div>
         </Container>
     );
 }

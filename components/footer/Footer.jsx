@@ -35,18 +35,18 @@ export default function Footer() {
                         </Link>
                     </div>
                     <div className="category">
-                        <Link href={"/"} className="menu">
+                        <Link href={"/search"} className="menu">
                             Search
                         </Link>
-                        <Link href={"/"} className="submenu">
+                        <Link href={"/search"} className="submenu">
                             학원 검색
                         </Link>
                     </div>
                     <div className="category">
-                        <Link href={"/"} className="menu">
+                        <Link href={"/board/free"} className="menu">
                             Message Board
                         </Link>
-                        <Link href={"/"} className="submenu">
+                        <Link href={"/board/free"} className="submenu">
                             자유게시판
                         </Link>
                         <Link href={"/"} className="submenu">
