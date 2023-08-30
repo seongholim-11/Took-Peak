@@ -15,9 +15,49 @@ function WriteForm() {
     const changeValue = (e) => {
         setSelectValue(e.target.value);
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // 폼 기본 제출 동작 막기
+
+        let data = {}
+        const title = e.target.title.value;
+        const content = e.target.content.value;
+        const board = e.target.board.value;
+
+        if (e.target.image && e.target.boardimage) {
+            const boardimage = e.target.boardimage.value;
+            const image = e.target.image.value;
+            data = { title, content, board, boardimage, image };
+        } else {
+            data = { title, content, board };
+        }
+
+        if (!title || !content) {
+            alert("제목과 내용은 필수 입력 사항입니다.");
+            return;
+        }
+
+        // fetch를 사용하여 데이터 서버로 전송
+        const response = await fetch("/api/post/upload", {
+            method: "POST",
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            // 성공적으로 서버에 전송됨
+            // 필요한 처리를 수행
+            const successMessage = await response.json();
+            alert(successMessage);
+        } else {
+            // 서버로부터 오류 응답을 받음
+            const errorResponse = await response.json();
+            alert(errorResponse);
+            // 오류 처리
+        }
+    };
     return (
         <Container>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="titleNsubmit">
                     <h3>게시글 작성</h3>
                     <Button variant="primary" type="submit">
@@ -35,6 +75,11 @@ function WriteForm() {
                         <option value="port">포트폴리오게시판</option>
                         <option value="qna">질문게시판</option>
                     </Form.Select>
+                    <input
+                        type="hidden"
+                        name="board"
+                        value={`${selectValue}`}
+                    />
                 </Form.Group>
                 {selectValue === "port" ? (
                     <Form.Group>
@@ -81,7 +126,6 @@ function WriteForm() {
                                         method: "POST",
                                         body: formData,
                                     });
-                                    console.log(result);
 
                                     if (result.ok) {
                                         /* 이미지의 URL을 업데이트 */
@@ -93,6 +137,7 @@ function WriteForm() {
                             />
                         </Form.Group>
                         <img src={src} />
+                        <input type="hidden" name="image" value={src} />
                     </Form.Group>
                 ) : (
                     <div></div>
@@ -101,6 +146,7 @@ function WriteForm() {
                     <Form.Control
                         type="text"
                         placeholder="글 제목을 입력해주세요"
+                        name="title"
                     />
                 </Form.Group>
                 <Form.Group className="content">
@@ -108,6 +154,7 @@ function WriteForm() {
                         as="textarea"
                         placeholder="글 내용을 입력해주세요"
                         rows={3}
+                        name="content"
                     />
                 </Form.Group>
             </Form>
