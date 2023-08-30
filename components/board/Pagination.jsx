@@ -6,8 +6,7 @@ export default function SearchPagination({page, setPage, searchPageCnt}) {
 
 
     const handlePageChange = (page) => {
-        // setPage(page);
-        // window.scrollTo({ top: 0, behavior: "smooth" });
+        setPage(page);
     };
 
     return (

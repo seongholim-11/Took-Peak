@@ -22,17 +22,21 @@ function WriteForm() {
     const handleSubmit = async (e) => {
         e.preventDefault(); // 폼 기본 제출 동작 막기
 
-        let data = {}
+        // 글 작성이 실패하거나 성공할 때 메시지를 전송하고 싶어서 함수로 만들었고
+        // FormData() 함수가 제대로 작동하지 않아서 아래와 같은 방법을 사용함.
+
+        let data = {};
         const title = e.target.title.value;
         const content = e.target.content.value;
         const board = e.target.board.value;
+        const view = e.target.view.value;
 
         if (e.target.image && e.target.boardimage) {
             const boardimage = e.target.boardimage.value;
             const image = e.target.image.value;
-            data = { title, content, board, boardimage, image };
+            data = { title, content, board, view, boardimage, image };
         } else {
-            data = { title, content, board };
+            data = { title, content, board, view };
         }
 
         if (!title || !content) {
@@ -51,7 +55,7 @@ function WriteForm() {
             // 필요한 처리를 수행
             const successMessage = await response.json();
             alert(successMessage);
-            router.push(`/board/${board}`)
+            router.push(`/board/${board}`);
         } else {
             // 서버로부터 오류 응답을 받음
             const errorResponse = await response.json();
@@ -161,6 +165,7 @@ function WriteForm() {
                         name="content"
                     />
                 </Form.Group>
+                <input type="hidden" name="view" value={0} />
             </Form>
         </Container>
     );
