@@ -34,9 +34,9 @@ function NavBar() {
             </NavDropdown>
             <NavDropdown title="Message Board" id="basic-nav-dropdown">
               <NavDropdown.Item href="/board/free">자유게시판</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">협업게시판</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">포트폴리오 게시판</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">질문게시판</NavDropdown.Item>
+              <NavDropdown.Item href="/board/collaboration">협업게시판</NavDropdown.Item>
+              <NavDropdown.Item href="/board/portfolio">포트폴리오 게시판</NavDropdown.Item>
+              <NavDropdown.Item href="/board/question">질문게시판</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="About Dev" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">개발 팁</NavDropdown.Item>

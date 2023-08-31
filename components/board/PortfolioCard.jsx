@@ -11,16 +11,18 @@ import Card from "react-bootstrap/Card";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import './board.scss'
+
 export default function List() {
     const [allList, setAllList] = useState([]);
     const [page, setPage] = useState(1);
     const [searchPageCnt, setSearchPageCnt] = useState(1);
     // 로딩 유무
     const [loading, setLoading] = useState(true);
-
+    
     const pathname = usePathname();
     const result = pathname.substr(7);
-
+    
     function truncateString(str, maxLength) {
         if (str.length > maxLength) {
             const content = str.slice(0, maxLength) + "...";
@@ -52,10 +54,13 @@ export default function List() {
         getBoard();
     }, [page]);
 
+    console.log("🚀 ~ file: PortfolioCard.jsx:18 ~ List ~ allList:", allList)
     return (
         <Container className="portfoliocard">
             {loading ? (
-                <Spinner animation="border" size="lg" />
+                <div className="loading">
+                    <Spinner animation="border" size="lg" />
+                </div>
             ) : (
                 <div>
                     <div className="cardWrap">
@@ -64,23 +69,25 @@ export default function List() {
                             .reverse()
                             .map((item, idx) => {
                                 return (
-                                    <Card key={idx}>
-                                        <Card.Img
-                                            variant="top"
-                                            src={item.image}
-                                        />
-                                        <Card.Body>
-                                            <Card.Title>
-                                                {item.title}
-                                            </Card.Title>
-                                            <Card.Text>
-                                                {truncateString(
-                                                    item.content,
-                                                    30
-                                                )}
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
+                                    <Link href={`/board/portfolio/${item._id}`}>
+                                        <Card key={idx}>
+                                            <Card.Img
+                                                variant="top"
+                                                src={item.image}
+                                            />
+                                            <Card.Body>
+                                                <Card.Title>
+                                                    {item.title}
+                                                </Card.Title>
+                                                <Card.Text>
+                                                    {truncateString(
+                                                        item.content,
+                                                        30
+                                                    )}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </Link>
                                 );
                             })}
                     </div>
