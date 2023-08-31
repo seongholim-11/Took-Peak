@@ -1,3 +1,4 @@
+/* list */
 .boardtitle {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -65,12 +66,13 @@
     }
 }
 
-.loading{
+/* portfoliocard */
+.loading {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 100px 0;
-    .spinner-border{
+    .spinner-border {
         border: var(--bs-spinner-border-width) solid #0070f3;
         border-right-color: transparent;
     }
@@ -86,6 +88,7 @@
     }
 }
 
+/* pagination */
 ul {
     list-style: none;
     padding: 0;
@@ -157,10 +160,12 @@ ul {
     .portfoliocard {
         .cardWrap {
             .card {
-                .card-title{
+                .card-title {
                     font-size: 1rem;
                 }
-                .card-text{font-size: 0.8rem;}
+                .card-text {
+                    font-size: 0.8rem;
+                }
             }
         }
     }
@@ -186,11 +191,13 @@ ul {
     .portfoliocard {
         .cardWrap {
             .card {
-                .card-title{
+                .card-title {
                     font-size: 0.8rem;
                     font-weight: bold;
                 }
-                .card-text{font-size: 0.6rem;}
+                .card-text {
+                    font-size: 0.6rem;
+                }
             }
         }
     }
