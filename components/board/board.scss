@@ -82,8 +82,16 @@
     .cardWrap {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        .card {
+        grid-template-rows: 1fr 1fr 1fr;
+        a {
             margin: 10px;
+            .card {
+                height: 100%;
+                .card-img-top{
+                    height: 60%;
+                    padding: 10px;
+                }
+            }
         }
     }
 }
