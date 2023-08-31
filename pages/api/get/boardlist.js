@@ -3,7 +3,7 @@ import { connectDB } from "@/util/database";
 export default async function handler(req, res) {
     const board = req.query.board; // req.query.parent를 통해 쿼리 스트링의 'parent' 값을 가져옵니다.
     const page = Number(req.query.page || 1); // 현재페이지
-    const perPage = 10; // 페이지 당 게시글 수
+    const perPage = 9; // 페이지 당 게시글 수
 
     // GET 요청 시 실행
     if (req.method === "GET") {
