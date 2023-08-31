@@ -167,6 +167,8 @@ ul {
     }
     .portfoliocard {
         .cardWrap {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
             .card {
                 .card-title {
                     font-size: 1rem;
