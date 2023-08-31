@@ -14,6 +14,7 @@ function WriteForm() {
 
     const [src, setSrc] = useState("");
     const [selectValue, setSelectValue] = useState("");
+    const [loading, setLoading] = useState(true);
 
     const router = useRouter();
 
