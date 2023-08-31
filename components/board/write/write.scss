@@ -1,3 +1,14 @@
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0;
+    .spinner-border{
+        border: var(--bs-spinner-border-width) solid #0070f3;
+        border-right-color: transparent;
+    }
+}
+
 form {
     margin: 30px 0;
     > div {

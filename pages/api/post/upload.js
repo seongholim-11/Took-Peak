@@ -23,14 +23,26 @@ export default async function handler(req, res) {
                 console.log("🚀 ~ file: upload.js:24 ~ handler ~ body:", body);
 
                 let db = (await connectDB).db("forum");
-                await db.collection("post").insertOne({
-                    title: body.title,
-                    content: body.content,
-                    board: body.board,
-                    author: session.user.name,
-                    createdAt: formattedDate,
-                    view: body.view,
-                });
+                if (body.image) {
+                    await db.collection("post").insertOne({
+                        title: body.title,
+                        content: body.content,
+                        board: body.board,
+                        image: body.image,
+                        author: session.user.name,
+                        createdAt: formattedDate,
+                        view: body.view,
+                    });
+                } else {
+                    await db.collection("post").insertOne({
+                        title: body.title,
+                        content: body.content,
+                        board: body.board,
+                        author: session.user.name,
+                        createdAt: formattedDate,
+                        view: body.view,
+                    });
+                }
                 res.status(200).json("글이 업로드 되었습니다.");
             } else {
                 res.status(401).json("로그인 후에 글 작성이 가능합니다.");

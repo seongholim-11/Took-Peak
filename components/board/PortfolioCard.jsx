@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 
 import Pagination from "@/components/board/Pagination";
 
-import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
+import Card from "react-bootstrap/Card";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -20,6 +20,15 @@ export default function List() {
 
     const pathname = usePathname();
     const result = pathname.substr(7);
+
+    function truncateString(str, maxLength) {
+        if (str.length > maxLength) {
+            const content = str.slice(0, maxLength) + "...";
+            return content;
+        } else {
+            return str;
+        }
+    }
 
     useEffect(() => {
         const getBoard = async () => {
@@ -44,50 +53,37 @@ export default function List() {
     }, [page]);
 
     return (
-        <Container className="boardlist">
+        <Container className="portfoliocard">
             {loading ? (
                 <Spinner animation="border" size="lg" />
             ) : (
                 <div>
-                    <Table hover>
-                        <thead>
-                            <tr>
-                                <td></td>
-                                <td>제목</td>
-                                <td>업로드 날짜</td>
-                                <td>글쓴이</td>
-                                <td>조회수</td>
-                            </tr>
-                        </thead>
+                    <div className="cardWrap">
                         {allList
                             .slice(0)
                             .reverse()
                             .map((item, idx) => {
                                 return (
-                                    <tbody key={idx}>
-                                        <tr>
-                                            <td className="td1">
-                                                {idx + (page - 1) * 10 + 1}
-                                            </td>
-                                            <td className="td2">
-                                                <Link
-                                                    href={`/board/free/${item._id}`}
-                                                >
-                                                    {item.title}
-                                                </Link>
-                                            </td>
-                                            <td className="td3">
-                                                {item.createdAt}
-                                            </td>
-                                            <td className="td4">
-                                                {item.author}
-                                            </td>
-                                            <td className="td5">{item.view}</td>
-                                        </tr>
-                                    </tbody>
+                                    <Card key={idx}>
+                                        <Card.Img
+                                            variant="top"
+                                            src={item.image}
+                                        />
+                                        <Card.Body>
+                                            <Card.Title>
+                                                {item.title}
+                                            </Card.Title>
+                                            <Card.Text>
+                                                {truncateString(
+                                                    item.content,
+                                                    30
+                                                )}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
                                 );
                             })}
-                    </Table>
+                    </div>
                     <Pagination
                         page={page}
                         setPage={setPage}
