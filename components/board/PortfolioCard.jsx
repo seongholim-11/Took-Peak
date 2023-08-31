@@ -54,7 +54,6 @@ export default function List() {
         getBoard();
     }, [page]);
 
-    console.log("🚀 ~ file: PortfolioCard.jsx:18 ~ List ~ allList:", allList)
     return (
         <Container className="portfoliocard">
             {loading ? (

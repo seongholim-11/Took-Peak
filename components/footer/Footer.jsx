@@ -49,13 +49,13 @@ export default function Footer() {
                         <Link href={"/board/free"} className="submenu">
                             자유게시판
                         </Link>
-                        <Link href={"/"} className="submenu">
+                        <Link href={"/board/collaboration"} className="submenu">
                             협업게시판
                         </Link>
-                        <Link href={"/"} className="submenu">
+                        <Link href={"/board/portfolio"} className="submenu">
                             포트폴리오 게시판
                         </Link>
-                        <Link href={"/"} className="submenu">
+                        <Link href={"/board/question"} className="submenu">
                             질문 게시판
                         </Link>
                     </div>
