@@ -10,6 +10,8 @@ import "./write.scss";
 import { useRouter } from "next/navigation";
 
 function WriteForm() {
+    const MAX_FILE_SIZE = 1048576; // 1MB
+
     const [src, setSrc] = useState("");
     const [selectValue, setSelectValue] = useState("");
 
@@ -89,10 +91,10 @@ function WriteForm() {
                         value={`${selectValue}`}
                     />
                 </Form.Group>
-                {selectValue === "port" ? (
+                {selectValue === "portfolio" ? (
                     <Form.Group>
                         <Form.Group>
-                            <Form.Label>사진을 첨부해주세요</Form.Label>
+                            <Form.Label>포트폴리오 사진을 첨부해주세요. <sub style={{color: 'red' }}>*사진의 크기는 1MB 이하만 첨부 가능합니다.</sub></Form.Label>
                             <Form.Control
                                 type="file"
                                 id="board"
@@ -103,6 +105,10 @@ function WriteForm() {
                                 onChange={async (e) => {
                                     /* 내용이 1개인 배열 */
                                     let file = e.target.files[0];
+                                    if (file.size > MAX_FILE_SIZE) {
+                                        alert("파일 크기가 1MB를 초과합니다.");
+                                        return;
+                                    }
                                     /* URI로 데이터를 전달하기 위해서 문자열을 인코딩 */
                                     let filename = encodeURIComponent(
                                         file.name
@@ -144,7 +150,9 @@ function WriteForm() {
                                 }}
                             />
                         </Form.Group>
-                        <img src={src} />
+                        <div className="preview">
+                            <img src={src} />
+                        </div>
                         <input type="hidden" name="image" value={src} />
                     </Form.Group>
                 ) : (
