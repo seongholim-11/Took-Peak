@@ -11,6 +11,8 @@ import Spinner from "react-bootstrap/Spinner";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import './board.scss'
+
 export default function List() {
     const [allList, setAllList] = useState([]);
     const [page, setPage] = useState(1);
