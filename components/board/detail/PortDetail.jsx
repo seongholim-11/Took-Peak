@@ -10,6 +10,9 @@ import { RxDotFilled } from "react-icons/rx";
 import "@/components/board/detail/portDetail.scss";
 
 export default function Detail({ result }) {
+    function replace(str) {
+        return str.replace(/\n/g, '<br>');
+    }
     return (
         <Container>
             <div className="wrap">
@@ -35,7 +38,7 @@ export default function Detail({ result }) {
                     <div className="img">
                         <img src={result.image} alt="image" />
                     </div>
-                    <div className="content"><p>{result.content}</p></div>
+                    <div className="content"><pre>{result.content}</pre></div>
                 </div>
             </div>
         </Container>

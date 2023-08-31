@@ -70,10 +70,7 @@ function WriteForm() {
             // 오류 처리
         }
     };
-    console.log(
-        "🚀 ~ file: WriteForm.jsx:18 ~ WriteForm ~ selectValue:",
-        selectValue
-    );
+    
     return (
         <Container>
             {loading ? (
