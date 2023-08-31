@@ -11,7 +11,7 @@ import Card from "react-bootstrap/Card";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import './board.scss'
+import "./board.scss";
 
 export default function List() {
     const [allList, setAllList] = useState([]);
@@ -19,10 +19,10 @@ export default function List() {
     const [searchPageCnt, setSearchPageCnt] = useState(1);
     // 로딩 유무
     const [loading, setLoading] = useState(true);
-    
+
     const pathname = usePathname();
     const result = pathname.substr(7);
-    
+
     function truncateString(str, maxLength) {
         if (str.length > maxLength) {
             const content = str.slice(0, maxLength) + "...";
@@ -68,8 +68,11 @@ export default function List() {
                             .reverse()
                             .map((item, idx) => {
                                 return (
-                                    <Link href={`/board/portfolio/${item._id}`}>
-                                        <Card key={idx}>
+                                    <Link
+                                        href={`/board/portfolio/${item._id}`}
+                                        key={idx}
+                                    >
+                                        <Card>
                                             <Card.Img
                                                 variant="top"
                                                 src={item.image}
