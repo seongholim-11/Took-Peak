@@ -36,9 +36,9 @@ export default async function handler(req, res) {
                     }
 
                     let db = (await connectDB).db("forum");
-                    await db.collection("comments").insertOne({
+                    await db.collection("boardComments").insertOne({
                         comment: body.comment,
-                        parent: body.parent,
+                        parent: body._id,
                         author: session.user.name,
                         createdAt: formattedDate,
                     });
