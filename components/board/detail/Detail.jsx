@@ -1,3 +1,5 @@
+/* portfolio 페이지를 제외한 페이지의 게시판 글 상세 내용 */
+
 "use client";
 
 import React from "react";
@@ -5,7 +7,7 @@ import Link from "next/link";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
-import { usePathname, useSearchParams, useParams } from "next/navigation";
+import { usePathname} from "next/navigation";
 
 import { BiArrowBack } from "react-icons/bi";
 import { RxDotFilled } from "react-icons/rx";
