@@ -19,7 +19,7 @@ export default function Detail({ result }) {
 
     return (
         <Container>
-            <div className="wrap">
+            <div className="boardDetailWrap">
                 <div className="prev">
                     <Link href={`/board/${category}`}>
                         <Button variant="outline-primary">
