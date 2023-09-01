@@ -25,7 +25,7 @@ export default function MainContainer() {
         {
             img: "/image/main/dev/location.png",
             title: "개발 기술",
-            content: "웹페이지 제작에 유용한 JavaScript, Css 기술",
+            content: "웹페이지 제작에 유용한 JavaScript, CSS 기술",
         },
         {
             img: "/image/main/dev/math.png",
