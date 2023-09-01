@@ -9,7 +9,7 @@ export default async function handler(req, res) {
             // 로그인한 유저한 동일한 email의 정보를 가져오기
             const db = (await connectDB).db("forum"); // connectDB()를 호출하여 DB 연결을 얻습니다.
             const result = await db
-                .collection("comments")
+                .collection("boardComments")
                 .find({ parent })
                 .toArray(); // find 결과를 배열로 변환하여 가져옵니다.
 
