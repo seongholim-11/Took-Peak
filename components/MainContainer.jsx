@@ -1,21 +1,26 @@
 "use client";
 
+// next
+import { useSession } from "next-auth/react";
+// components
+// user
 import LoginUser from "@/components/user/LoginUser";
 import NotLoginUser from "@/components/user/NotLoginUser";
 import Calender from "./user/Calender";
+// search
 import AcademySearch from "./search/main/AcademySearch";
-
+// board
+import Board from "./board/main/Board";
+// dev
+import Box2x1 from "./dev/Box2x1";
+import Box1x1 from "./dev/Box1x1";
+// bootstrap
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { useSession } from "next-auth/react";
-
-import Board from "./board/main/Board";
-import Box2x1 from "./dev/Box2x1";
-import Box1x1 from "./dev/Box1x1";
-
 export default function MainContainer() {
+    // dev의 box 내용
     const box1 = [
         {
             img: "/image/main/dev/security.png",
@@ -45,6 +50,7 @@ export default function MainContainer() {
         <Container>
             <Row className="userWrap">
                 <Col lg={7}>
+                    {/* 로그인 유무에 따라 컴포넌트 바꿔서 출력 */}
                     {session.data !== null ? <LoginUser /> : <NotLoginUser />}
                 </Col>
                 <Col lg={5}>

@@ -1,7 +1,12 @@
+// 메인페이지에 출력되는 달력 컴포넌트
+
 "use client";
 
+// react
 import React, { useState } from "react";
+// react-datepicker 라이브러리
 import DatePicker from "react-datepicker";
+// css
 import "react-datepicker/dist/react-datepicker.css";
 
 import './user.scss'
