@@ -1,10 +1,13 @@
+// react&next
+import React from "react";
+import Link from "next/link";
+// bootstrap
+import Container from "react-bootstrap/Container";
+// react-icon
 import { SiTistory } from "react-icons/si";
 import { AiFillGithub } from "react-icons/ai";
-import Link from "next/link";
-import React from "react";
-import Container from "react-bootstrap/Container";
 import { FaMountain } from "react-icons/fa";
-
+// scss
 import './footer.scss'
 
 export default function Footer() {
