@@ -1,5 +1,6 @@
+// react
 import React from "react";
-
+// scss
 import './dev.scss'
 
 export default function Box1x1({ item, idx }) {

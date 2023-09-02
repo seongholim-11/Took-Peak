@@ -1,5 +1,6 @@
-import React from 'react';
-
+// react
+import React from "react";
+// scss
 import './dev.scss'
 
 function Hashtag() {
