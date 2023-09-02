@@ -24,7 +24,7 @@ export default function MainContainer() {
         },
         {
             img: "/image/main/dev/location.png",
-            title: "오늘의 코딩 문제",
+            title: "이주의 코딩 문제",
             content: "웹페이지 제작에 유용한 JavaScript, CSS 기술",
         },
         {
