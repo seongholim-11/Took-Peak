@@ -1,18 +1,18 @@
 'use client'
 
-import { FaMountain } from "react-icons/fa"; 
+// 로그인, 로그아웃 기능을 위해 import
+import { signIn } from "next-auth/react";
+import { signOut } from "next-auth/react";
+// 로그인 유무 확인을 위해 import
+import { useSession } from "next-auth/react";
+// bootstrap
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
-// 로그인, 로그아웃 기능을 위해 import
-import { signIn } from "next-auth/react";
-import { signOut } from "next-auth/react";
-
-// 로그인 유무 확인을 위해 import
-import { useSession } from "next-auth/react";
-
+// react-icons
+import { FaMountain } from "react-icons/fa";
+// scss
 import './nav.scss'
 
 function NavBar() {
