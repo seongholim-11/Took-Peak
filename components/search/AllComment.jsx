@@ -1,5 +1,8 @@
-import React from "react";
+/* /search/Comment 컴포넌트로부터 받은 댓글 데이터를 통해 댓글을 출력하는 컴포넌트 */
 
+// react
+import React from "react";
+// scss
 import './search.scss'
 
 export default function AllComment({ allComment }) {

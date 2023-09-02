@@ -1,3 +1,5 @@
+// ContentTable이 출력되기 전에 로딩 컴포넌트
+
 import Placeholder from "react-bootstrap/Placeholder";
 import Table from "react-bootstrap/Table";
 
