@@ -1,16 +1,24 @@
+// 게시글 상세페이지의 주요 내용을 출력하는 컴포넌트
+
 "use client";
 
+// react
 import { useState, useEffect } from "react";
+// bootstrap
 import Table from "react-bootstrap/Table";
-
+// scss
 import './search.scss'
 
+// 게시글의 상세페이지로부터 데이터 받음
 export default function ContentTable({ information, id, cnt }) {
+    // 수업료 데이트를 숫자 데이터로 변환
     const price = Number(information.perTrco);
+    // 수업료 데이터에 쉼표를 붙여서 출력
     const convertedPrice = price.toLocaleString("ko-KR");
-
+    // 서버로부터 받은 수업 데이터를 저장
     const [date, setDate] = useState([]);
 
+    // 서버에 해당 글에 대한 정보를 보내면서 데이터를 요청
     useEffect(() => {
         const searchDate = async () => {
             fetch("/api/post/searchDate", {
