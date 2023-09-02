@@ -1,6 +1,8 @@
-import React from 'react'
+// react
+import React from "react";
+// component
 import Hashtag from './Hashtag'
-
+// scss
 import './dev.scss'
 
 export default function Box2x1() {
