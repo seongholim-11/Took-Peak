@@ -1,19 +1,26 @@
+/* 메인페이지의 board 컴포넌트 */
 "use client";
 
+// react
 import React, { useState, useEffect } from "react";
+// components
+import TabContent from "./TabContent";
+import Title from "../Title";
+// bootstrap
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
-
+// scss
 import "./mainboard.scss";
-import TabContent from "./TabContent";
-import Title from "../Title";
 
 export default function Board() {
+    // 누른 탭메뉴가 무엇인지 저장하는 state 
     const [activeTab, setActiveTab] = useState("free");
+    // 서버와 DB로부터 3개씩 받아오는 카테고리별 게시글
     const [boardData, setBoardData] = useState([]);
 
+    // 서버에 선태된 카테고리 게시글 3개 요청하기
     useEffect(() => {
         const getBoard = async () => {
             try {
@@ -23,7 +30,6 @@ export default function Board() {
                 if (response.ok) {
                     const data = await response.json();
                     setBoardData(data.result);
-                    // setLoading(false);
                 } else {
                     throw new Error("Network response was not ok.");
                 }
@@ -32,9 +38,9 @@ export default function Board() {
             }
         };
         getBoard();
+        // 사용자가 탭을 눌러 카테고리가 바뀔 때마다 get 요청
     }, [activeTab]);
 
-    console.log("🚀 ~ file: Board.jsx:14 ~ Board ~ boardData:", boardData);
     return (
         <div className="board">
             <Title title={'게시판'}/>
@@ -79,6 +85,7 @@ export default function Board() {
                         </Nav>
                     </Col>
                     <Col className="tabBody">
+                        {/* 탭 내용을 보여주는 자식 컴포넌트에 선택된 카테고리와 해당 데이터 Props로 넘겨주기 */}
                         <Tab.Content>
                             <Tab.Pane eventKey="free">
                                 <TabContent
