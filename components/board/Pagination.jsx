@@ -1,3 +1,5 @@
+// 페이지네이션 컴포넌트
+
 "use client";
 
 import Pagination from "react-js-pagination";
