@@ -1,7 +1,11 @@
+// 로그인한 상태에서 출력되는 user 정보 컴포넌트    
+
+// react&next
 import { useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
+// bootstrap
 import Spinner from "react-bootstrap/Spinner";
-
+// scss
 import './user.scss'
 
 export default function User() {
