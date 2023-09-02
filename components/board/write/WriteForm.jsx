@@ -1,28 +1,37 @@
+/* write 페이지의 자식 컴포넌트, 게시글 작성 폼 */
+
 "use client";
 
+// react&next
 import React, { useState, useEffect } from "react";
-
+import { useRouter } from "next/navigation";
+// bootstrap
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-
+// scss
 import "./write.scss";
-import { useRouter } from "next/navigation";
 
 function WriteForm() {
+    // 게시글에 첨부할 수 있는 최대 이미지 크기
     const MAX_FILE_SIZE = 1048576; // 1MB
-
+    // aws에 업로드된 이미지의 미리보기 url 저장
     const [src, setSrc] = useState("/image/write/Frame.png");
+    // 게시글이 업로드될 카테고리가 저장되는 state
     const [selectValue, setSelectValue] = useState("");
+    // 로딩 중(spin) 유뮤를 위한 state
     const [loading, setLoading] = useState(true);
 
+    // 업로드 완료 후 페이지 이동을 위한 useRouter
     const router = useRouter();
 
+    // 선택된 카테고리를 state에 저장하는 function
     const changeValue = (e) => {
         setSelectValue(e.target.value);
     };
 
+    // 페이지의 로드가 끝나면 loading 종료
     useEffect(() => {
         setLoading(false);
     }, []);
@@ -33,12 +42,14 @@ function WriteForm() {
         // 글 작성이 실패하거나 성공할 때 메시지를 전송하고 싶어서 함수로 만들었고
         // FormData() 함수가 제대로 작동하지 않아서 아래와 같은 방법을 사용함.
 
+        // 서버에 보낼 data 저장
         let data = {};
         const title = e.target.title.value;
         const content = e.target.content.value;
         const board = selectValue;
         const view = e.target.view.value;
 
+        // 포트폴리오 게시글만 사진이 첨부되기 때문에 if문으로 구분
         if (src) {
             const image = src;
             data = { title, content, board, view, image };
@@ -46,6 +57,7 @@ function WriteForm() {
             data = { title, content, board, view };
         }
 
+        // 제목과 내용이 비어있으면 경고 메시지 출력
         if (!title || !content) {
             alert("제목과 내용은 필수 입력 사항입니다.");
             return;
@@ -169,9 +181,11 @@ function WriteForm() {
                                     }}
                                 />
                             </Form.Group>
+                            {/* 사진 미리보기 */}
                             <div className="preview">
                                 <img src={src} />
                             </div>
+                            {/* 업로드된 사진 url을 저장하기 위한 input 태그 */}
                             <input type="hidden" name="image" value={src} />
                         </Form.Group>
                     ) : (
@@ -192,6 +206,7 @@ function WriteForm() {
                             name="content"
                         />
                     </Form.Group>
+                    {/* 조회수를 위한 input 태그 */}
                     <input type="hidden" name="view" value={0} />
                 </Form>
             )}
