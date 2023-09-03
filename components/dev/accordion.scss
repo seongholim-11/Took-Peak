@@ -1,0 +1,29 @@
+.container {
+    h3 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: #0070f3;
+    }
+    h5 {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        color: #0070f3;
+    }
+    .accordionButton {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 575px) {
+    .accordionWrap{
+        margin: 30px;
+    }
+}
