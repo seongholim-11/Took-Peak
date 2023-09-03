@@ -39,10 +39,10 @@ function NavBar() {
               <NavDropdown.Item href="/board/question">질문게시판</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="About Dev" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">개발 팁</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">개발 기술</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">CS</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">개발 면접</NavDropdown.Item>
+              <NavDropdown.Item href="/dev/Development">Development</NavDropdown.Item>
+              <NavDropdown.Item href="/dev/Study">Study</NavDropdown.Item>
+              <NavDropdown.Item href="/dev/Employment">Employment</NavDropdown.Item>
+              <NavDropdown.Item href="/dev/etc">etc</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown.Divider />
             {/* 로그인이 안 되어 있으면 로그인 버튼이, 되어있으면 로그아웃 버튼이 출력*/}
