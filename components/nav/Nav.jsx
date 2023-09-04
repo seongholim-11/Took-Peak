@@ -26,7 +26,6 @@ function NavBar() {
           <Nav>
           <NavDropdown title="Took-Peak" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.3">Took-Peak</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">History</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Notice</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Search" id="basic-nav-dropdown">
