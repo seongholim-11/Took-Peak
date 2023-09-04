@@ -1,5 +1,5 @@
-import AccodionDevelopment from "@/components/dev/AccodionDevelopment";
+import AccordionDevelopment from "@/components/dev/AccordionDevelopment";
 
 export default function page() {
-    return <AccodionDevelopment />;
+    return <AccordionDevelopment />;
 }

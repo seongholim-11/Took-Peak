@@ -183,7 +183,7 @@ export default function Accodion() {
                         );
                     })}
                 </Accordion>
-                <h5>포트폴리오</h5>
+                <h5>포트폴리오/레퍼런스</h5>
                 <Accordion defaultActiveKey={["0"]} alwaysOpen>
                     {portfolio.map((item, idx) => {
                         return (
