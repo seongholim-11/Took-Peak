@@ -25,8 +25,8 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
           <NavDropdown title="Took-Peak" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.3">Took-Peak</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Notice</NavDropdown.Item>
+              <NavDropdown.Item href="/tookpeak/tookpeak">Took-Peak</NavDropdown.Item>
+              <NavDropdown.Item href="/tookpeak/notice">Notice</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Search" id="basic-nav-dropdown">
               <NavDropdown.Item href="/search">학원 검색</NavDropdown.Item>
