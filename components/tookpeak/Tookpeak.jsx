@@ -1,10 +1,14 @@
+'tookpeak 커뮤니티를 소개하는 내용을 담은 컴포넌트'
+
 "use client";
 
+// react
 import React from "react";
+// bootstrap
 import Container from "react-bootstrap/Container";
-import Button from 'react-bootstrap/Button';
+// react-icons
 import { BsFillSendFill } from "react-icons/bs";
-
+// scss
 import "./tookpeak.scss";
 
 export default function tookpeak() {
