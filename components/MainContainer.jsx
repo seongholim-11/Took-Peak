@@ -40,7 +40,7 @@ export default function MainContainer() {
         },
         {
             img: "/image/main/dev/user.png",
-            title: "etc.",
+            title: "etc",
             content: "Information to help you develop a program",
         },
     ];
