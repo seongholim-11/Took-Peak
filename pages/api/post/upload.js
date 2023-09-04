@@ -3,10 +3,10 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
-    console.log("🚀 ~ file: upload.js:6 ~ handler ~ req:", req.body);
     if (req.method === "POST") {
         try {
             let session = await getServerSession(req, res, authOptions);
+            console.log("🚀 ~ file: upload.js:9 ~ handler ~ session:", session)
 
             const currentDate = new Date(); // 현재 시간 정보 생성
             const formattedDate = `${currentDate.getFullYear()}-${(
@@ -20,7 +20,6 @@ export default async function handler(req, res) {
 
             if (session !== null) {
                 const body = JSON.parse(req.body);
-                console.log("🚀 ~ file: upload.js:24 ~ handler ~ body:", body);
 
                 let db = (await connectDB).db("forum");
                 if (body.image) {

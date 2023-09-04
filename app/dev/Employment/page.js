@@ -1,5 +1,5 @@
-import AccodionEmployment from "@/components/dev/AccodionEmployment";
+import AccordionEmployment from "@/components/dev/AccordionEmployment";
 
 export default function page() {
-    return <AccodionEmployment/>
+    return <AccordionEmployment/>
 }
