@@ -47,6 +47,50 @@ export default function Accodion() {
             link: "https://coder.com/",
         },
     ];
+    const version = [
+        {
+            title: "Git",
+            content:
+                "Git은 현재 가장 인기 있는 버전 관리 시스템 중 하나입니다.\n분산 버전 관리 시스템으로, 소스 코드의 변경 내용을 효율적으로 관리하고 협업에 사용됩니다.\nGitHub, GitLab, Bitbucket 등과 통합하여 사용할 수 있습니다.",
+            link: "https://git-scm.com/",
+        },
+        {
+            title: "Subversion (SVN)",
+            content:
+                "SVN은 중앙집중식 버전 관리 시스템으로, 파일과 디렉토리의 변경 내용을 추적합니다.\n비교적 간단하고 사용하기 쉬우며, 팀 협업을 위해 사용됩니다.",
+            link: "https://subversion.apache.org/",
+        },
+        {
+            title: "Mercurial",
+            content:
+                "Mercurial은 분산 버전 관리 시스템으로, Git과 유사한 기능을 제공하지만 Git보다 단순한 사용법을 가지고 있습니다.",
+            link: "https://www.mercurial-scm.org/",
+        },
+        {
+            title: "Perforce (Helix Core)",
+            content:
+                "Perforce는 대규모 개발 프로젝트 및 게임 개발에서 주로 사용되는 중앙집중식 버전 관리 시스템입니다.",
+            link: "https://www.perforce.com/",
+        },
+        {
+            title: "Darcs",
+            content:
+                "Darcs는 다른 버전 관리 시스템과 다르게 변경 내용을 기록하는 방식을 사용하는 분산 버전 관리 시스템입니다.",
+            link: "http://darcs.net/",
+        },
+        {
+            title: "Fossil",
+            content:
+                "Fossil은 분산 버전 관리, 이슈 추적, 빌드 및 배포 관리, 웹 인터페이스 등을 통합한 통합형 도구입니다.",
+            link: "https://fossil-scm.org/home",
+        },
+        {
+            title: "Plastic SCM",
+            content:
+                "Plastic SCM은 다양한 개발 스타일과 프로세스를 지원하는 분산 버전 관리 시스템입니다.",
+            link: "https://www.plasticscm.com/",
+        },
+    ];
     const ai = [
         {
             title: "ChatGPT",
@@ -100,19 +144,33 @@ export default function Accodion() {
                 <h5>온라인 코드 에디터 및 개발 환경</h5>
                 <Accordion defaultActiveKey={["0"]} alwaysOpen>
                     {editor.map((item, idx) => {
-                        return <AccordionItem item={item} idx={idx} key={idx}/>;
+                        return (
+                            <AccordionItem item={item} idx={idx} key={idx} />
+                        );
+                    })}
+                </Accordion>
+                <h5>버전 관리 도구</h5>
+                <Accordion defaultActiveKey={["0"]} alwaysOpen>
+                    {version.map((item, idx) => {
+                        return (
+                            <AccordionItem item={item} idx={idx} key={idx} />
+                        );
                     })}
                 </Accordion>
                 <h5>AI</h5>
                 <Accordion defaultActiveKey={["0"]} alwaysOpen>
                     {ai.map((item, idx) => {
-                        return <AccordionItem item={item} idx={idx} key={idx}/>;
+                        return (
+                            <AccordionItem item={item} idx={idx} key={idx} />
+                        );
                     })}
                 </Accordion>
                 <h5>Algorithm</h5>
                 <Accordion defaultActiveKey={["0"]} alwaysOpen>
                     {algorithm.map((item, idx) => {
-                        return <AccordionItem item={item} idx={idx} key={idx}/>;
+                        return (
+                            <AccordionItem item={item} idx={idx} key={idx} />
+                        );
                     })}
                 </Accordion>
             </div>

@@ -46,26 +46,29 @@ export default function Accodion() {
                 "로켓펀치는 한국의 스타트업 및 테크 기업 채용 정보를 제공하는 사이트로, 스타트업 관련 채용 정보와 이력서 등록 기능을 제공합니다.",
             link: "https://www.rocketpunch.com/",
         },
-        ,
         {
             title: "워크넷 (Worknet)",
             content:
                 "워크넷은 한국 고용노동부가 운영하는 공공 취업 정보 플랫폼으로, 다양한 공공기관 및 민간 기업의 채용 정보를 제공하고 고용 관련 정보를 제공합니다.",
             link: "https://www.work.go.kr/",
         },
-        ,
         {
             title: "인크루트 (Incruit)",
             content:
                 "인크루트는 국내 대표적인 채용 플랫폼 중 하나입니다. 기업과 인재를 연결해주며, 다양한 채용 정보와 취업 관련 서비스를 제공합니다.",
             link: "https://www.incruit.com/",
         },
-        ,
         {
             title: "나라일터",
             content:
                 "나라일터는 한국 공공기관 채용 정보를 제공하는 사이트로, 정부 및 지자체 기관의 채용 정보와 시험 일정 등을 확인할 수 있습니다.",
             link: "https://www.gojobs.go.kr/",
+        },
+        {
+            title: "코딩어네리 (Codenary)",
+            content:
+                "한국의 소프트웨어 개발 기업 및 IT 회사 목록을 제공하는 웹사이트로, 채용 정보와 회사 정보를 확인할 수 있습니다.",
+            link: "https://www.codenary.co.kr/company/list",
         },
     ];
     const interview = [
