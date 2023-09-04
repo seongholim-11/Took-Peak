@@ -8,7 +8,7 @@ import { SiTistory } from "react-icons/si";
 import { AiFillGithub } from "react-icons/ai";
 import { FaMountain } from "react-icons/fa";
 // scss
-import './footer.scss'
+import "./footer.scss";
 
 export default function Footer() {
     return (
@@ -60,20 +60,20 @@ export default function Footer() {
                         </Link>
                     </div>
                     <div className="category">
-                        <Link href={"/"} className="menu">
-                            About Dev
+                        <Link href={"/dev/Development"} className="menu">
+                        About Dev
                         </Link>
-                        <Link href={"/"} className="submenu">
-                            개발 팁
+                        <Link href={"/dev/Development"} className="submenu">
+                        Development
                         </Link>
-                        <Link href={"/"} className="submenu">
-                            개발 기술
+                        <Link href={"/dev/Study"} className="submenu">
+                        Study
                         </Link>
-                        <Link href={"/"} className="submenu">
-                            CS
+                        <Link href={"/dev/Employment"} className="submenu">
+                        Employment
                         </Link>
-                        <Link href={"/"} className="submenu">
-                            개발 면접
+                        <Link href={"/dev/etc"} className="submenu">
+                            etc
                         </Link>
                     </div>
                     <div className="connect">
