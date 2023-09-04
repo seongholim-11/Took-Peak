@@ -39,9 +39,9 @@ function NavBar() {
               <NavDropdown.Item href="/board/question">질문게시판</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="About Dev" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/dev/Development">Development</NavDropdown.Item>
-              <NavDropdown.Item href="/dev/Study">Study</NavDropdown.Item>
-              <NavDropdown.Item href="/dev/Employment">Employment</NavDropdown.Item>
+              <NavDropdown.Item href="/dev/development">Development</NavDropdown.Item>
+              <NavDropdown.Item href="/dev/study">Study</NavDropdown.Item>
+              <NavDropdown.Item href="/dev/employment">Employment</NavDropdown.Item>
               <NavDropdown.Item href="/dev/etc">etc</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown.Divider />
