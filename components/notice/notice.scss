@@ -1,0 +1,246 @@
+/* list */
+.noticetitle {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    > div {
+        h2 {
+            margin: 0;
+        }
+    }
+}
+
+.boardlist {
+    > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .table {
+            --bs-table-bg: #f0f0f0;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            margin-bottom: 0;
+            thead {
+                --bs-table-bg: #ddd;
+                tr {
+                }
+            }
+            tbody {
+                tr {
+                    font-size: 0.8rem;
+                }
+            }
+            tr {
+                td {
+                    &:nth-child(1) {
+                        width: 8%;
+                        text-align: center;
+                    }
+                    &:nth-child(2) {
+                        width: 45%;
+                    }
+                    &:nth-child(3) {
+                        width: 20%;
+                        text-align: center;
+                    }
+                    &:nth-child(4) {
+                        width: 15%;
+                        text-align: center;
+                    }
+                    &:nth-child(5) {
+                        width: 13%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    .spinner-border {
+        margin: 100px auto;
+        border: var(--bs-spinner-border-width) solid #0070f3;
+        border-right-color: transparent;
+    }
+}
+
+/* portfoliocard */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0;
+    .spinner-border {
+        border: var(--bs-spinner-border-width) solid #0070f3;
+        border-right-color: transparent;
+    }
+}
+
+.portfoliocard {
+    .cardWrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        a {
+            margin: 10px;
+            .card {
+                height: 100%;
+                .card-img-top{
+                    height: 60%;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+
+/* pagination */
+ul {
+    list-style: none;
+    padding: 0;
+
+    &.pagination {
+        display: flex;
+        justify-content: center;
+        margin: 30px;
+
+        li {
+            display: inline-block;
+            width: auto;
+            min-width: 30px;
+            padding: 0 5px;
+            height: 30px;
+            border: 1px solid #e2e2e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            &:first-child {
+                border-radius: 5px 0 0 5px;
+            }
+            &:last-child {
+                border-radius: 0 5px 5px 0;
+            }
+            a {
+                text-decoration: none;
+                color: #337ab7;
+                font-size: 1rem;
+                &:hover,
+                &.active {
+                    color: blue;
+                }
+            }
+            &.active {
+                background-color: #337ab7;
+                a {
+                    color: white;
+                }
+            }
+        }
+
+        .page-selection {
+            width: 48px;
+            height: 30px;
+            color: #337ab7;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .boardlist {
+        > div {
+            .table {
+                thead {
+                    tr {
+                        font-size: 0.8rem;
+                    }
+                }
+                tbody {
+                    tr {
+                        font-size: 0.6rem;
+                    }
+                }
+            }
+        }
+    }
+    .portfoliocard {
+        .cardWrap {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            .card {
+                .card-title {
+                    font-size: 1rem;
+                }
+                .card-text {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .boardlist {
+        > div {
+            .table {
+                thead {
+                    tr {
+                        font-size: 0.6rem;
+                    }
+                }
+                tbody {
+                    tr {
+                        font-size: 0.4rem;
+                    }
+                }
+            }
+        }
+    }
+    .portfoliocard {
+        .cardWrap {
+            .card {
+                .card-title {
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                }
+                .card-text {
+                    font-size: 0.6rem;
+                }
+            }
+        }
+    }
+    .pagination {
+        justify-content: center;
+        li {
+            a {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .boardtitle > div,
+    .boardlist > div {
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+    .boardlist {
+        > div {
+            .table {
+                thead {
+                    tr {
+                        font-size: 0.4rem;
+                    }
+                }
+                tbody {
+                    tr {
+                        font-size: 0.2rem;
+                    }
+                }
+            }
+        }
+    }
+    .portfoliocard {
+        .cardWrap {
+            margin: 0 30px;
+        }
+    }
+}
