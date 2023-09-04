@@ -24,13 +24,13 @@ export default function Footer() {
                 </div>
                 <div className="column2">
                     <div className="category">
-                        <Link href={"/"} className="menu">
+                        <Link href={"/tookpeak"} className="menu">
                             Took-Peak
                         </Link>
-                        <Link href={"/"} className="submenu">
+                        <Link href={"/tookpeak"} className="submenu">
                             Took-Peak
                         </Link>
-                        <Link href={"/"} className="submenu">
+                        <Link href={"/notice"} className="submenu">
                             Notice
                         </Link>
                     </div>
