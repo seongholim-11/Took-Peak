@@ -31,9 +31,6 @@ export default function Footer() {
                             Took-Peak
                         </Link>
                         <Link href={"/"} className="submenu">
-                            History
-                        </Link>
-                        <Link href={"/"} className="submenu">
                             Notice
                         </Link>
                     </div>
