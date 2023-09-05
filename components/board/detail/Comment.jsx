@@ -43,12 +43,14 @@ export default function Comment({ result }) {
             } else {
                 // 서버로부터 오류 메시지 저장
                 const errorData = await response.json();
+                // 입력창 초기화
+                setComment("")
                 // 오류 메시지 state에 저장
                 setErrorMessage(errorData);
             }
         } catch (error) {
+            setComment("")
             console.error("Error:", error);
-            setErrorMessage("서버 오류가 발생했습니다.");
         }
     };
 
