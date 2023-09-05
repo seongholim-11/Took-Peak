@@ -5,11 +5,14 @@
 // react&next
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+// components
+import NotLoginUser from "@/components/user/NotLoginUser";
 // bootstrap
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
+import Modal from "react-bootstrap/Modal";
 // scss
 import "./write.scss";
 
@@ -22,6 +25,11 @@ function WriteForm() {
     const [selectValue, setSelectValue] = useState("");
     // 로딩 중(spin) 유뮤를 위한 state
     const [loading, setLoading] = useState(true);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // 업로드 완료 후 페이지 이동을 위한 useRouter
     const router = useRouter();
@@ -79,12 +87,22 @@ function WriteForm() {
             // 서버로부터 오류 응답을 받음
             const errorResponse = await response.json();
             alert(errorResponse);
+            setShow(true);
+            console.log(show);
             // 오류 처리
         }
     };
-    
+
     return (
         <Container>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>SIGN UP & LOGIN</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <NotLoginUser />
+                </Modal.Body>
+            </Modal>
             {loading ? (
                 <div className="loading">
                     <Spinner animation="border" size="lg" />
@@ -207,7 +225,7 @@ function WriteForm() {
                         />
                     </Form.Group>
                     {/* 조회수를 위한 input 태그 */}
-                    <input type="number" name="view" value={0} />
+                    <input type="hidden" name="view" value={0} />
                 </Form>
             )}
         </Container>
