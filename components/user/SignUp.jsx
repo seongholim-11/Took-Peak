@@ -1,59 +1,33 @@
 "use client";
 
+// react
 import { useState } from "react";
+// components
+import Email from "./SignUp/Email";
+import Password from "./SignUp/Password";
+import Specialize from "./SignUp/Specialize";
 // bootstrap
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Avatar from "./SignUp/Avatar";
 
 export default function SignUp({ show, handleClose }) {
-    // 게시글에 첨부할 수 있는 최대 이미지 크기
-    const MAX_FILE_SIZE = 1048576; // 1MB
-
     // aws에 업로드된 이미지의 미리보기 url 저장
     let [src, setSrc] = useState("/image/main/user/Avatars.png");
+    // 입력된 email 값
     const [emailValue, setEmailValue] = useState("");
+    // 입력된 email 유효성 검사 결과
     const [isValidEmail, setIsValidEmail] = useState(false);
+    // 입력된 password 값
     const [passwordValue, setPasswordValue] = useState("");
+    // 입력된 password 유효성 검사 결과
     const [isValidPassword, setIsValidPassword] = useState(false);
+    // 입력된 confirm password 값
     const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
+    // 입력된 confirm password 유효성 검사 결과
     const [isValidConfirmPassword, setIsValidConfirmPassword] = useState(false);
 
-    // 입력값이 변경될 때 호출되는 이벤트 핸들러
-    const handleEmailChange = (e) => {
-        const value = e.target.value;
-
-        // 정규식을 사용하여 이메일 주소 유효성 검사
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const isValid = emailRegex.test(value);
-
-        setEmailValue(value); // 입력값 업데이트
-        setIsValidEmail(isValid); // 이메일 유효성 상태 업데이트
-    };
-
-    // 입력값이 변경될 때 호출되는 이벤트 핸들러
-    const handlePasswordChange = (e) => {
-        const value = e.target.value;
-
-        // 정규식을 사용하여 이메일 주소 유효성 검사
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-        const isValid = passwordRegex.test(value);
-
-        setPasswordValue(value); // 입력값 업데이트
-        setIsValidPassword(isValid); // 이메일 유효성 상태 업데이트
-    };
-
-    // 입력값이 변경될 때 호출되는 이벤트 핸들러
-    const handleConfirmPasswordChange = (e) => {
-        const value = e.target.value;
-
-        if (passwordValue === value) {
-            setConfirmPasswordValue(value); // 입력값 업데이트
-            setIsValidConfirmPassword(true); // 이메일 유효성 상태 업데이트
-        } else {
-            setIsValidConfirmPassword(false); // 이메일 유효성 상태 업데이트
-        }
-    };
-
+    // form 입력 값들 서버에 전송 및 요청
     const Submit = async (e) => {
         e.preventDefault(); // 폼 기본 제출 동작 막기
 
@@ -108,66 +82,7 @@ export default function SignUp({ show, handleClose }) {
                     {/*회원가입 form */}
                     <form onSubmit={Submit}>
                         <Modal.Body>
-                            <label htmlFor="avatar">Profile picture</label>
-                            <input
-                                id="avatar"
-                                /* 서버로 데이터를 전송할 때 사용 */
-                                name="avatar"
-                                type="file"
-                                /* 이미지 파일만 선택 가능 */
-                                accept="image/*"
-                                onChange={async (e) => {
-                                    /* 내용이 1개인 배열 */
-                                    let file = e.target.files[0];
-                                    if (file.size > MAX_FILE_SIZE) {
-                                        setSrc("/image/main/user/Avatars.png");
-                                        alert("파일 크기가 1MB를 초과합니다.");
-                                        return;
-                                    }
-                                    /* URI로 데이터를 전달하기 위해서 문자열을 인코딩 */
-                                    let filename = encodeURIComponent(
-                                        file.name
-                                    );
-                                    /* 서버에 선택한 파일 이름을 전달하여 업로드를 위한 필수 정보를 요청 */
-                                    let res = await fetch(
-                                        "/api/post/avatar?file=" + filename
-                                    );
-                                    /* 서버 응답을 JSON 형태로 파싱하여 필요한 정보를 추출 */
-                                    res = await res.json();
-
-                                    //S3 업로드
-                                    /* new FormData() => 폼을 쉽게 보내도록 도와주는 객체 */
-                                    const formData = new FormData();
-
-                                    /* 
-                            필수 필드와 선택한 파일을 FormData에 추가 
-                            Object.entries() // 모든 프로퍼티와 값을 배열로 반환함
-                            */
-                                    Object.entries({
-                                        ...res.fields,
-                                        file,
-                                    }).forEach(([key, value]) => {
-                                        formData.append(key, value);
-                                    });
-
-                                    /* FormData를 서버 URL로 POST 요청하여 파일을 S3에 업로드 */
-                                    let result = await fetch(res.url, {
-                                        method: "POST",
-                                        body: formData,
-                                    });
-                                    console.log(result);
-
-                                    if (result.ok) {
-                                        /* 이미지의 URL을 업데이트 */
-                                        setSrc(result.url + "/" + filename);
-                                    } else {
-                                        console.log("실패");
-                                    }
-                                }}
-                            />
-                            <img src={src} />
-                            {/* 이미지 url를 서버에 보내기 위해 input */}
-                            <input type="hidden" name="avatar" value={src} />
+                            <Avatar src={src} setSrc={setSrc} />
                             <label htmlFor="name">nickname</label>
                             <input
                                 name="name"
@@ -175,191 +90,25 @@ export default function SignUp({ show, handleClose }) {
                                 type="text"
                                 placeholder="nickname"
                             />
-                            <label htmlFor="email">
-                                E-mail{" "}
-                                {isValidEmail ? (
-                                    <span
-                                        style={{
-                                            color: "blue",
-                                            marginLeft: "10px",
-                                            fontSize: "0.5rem",
-                                        }}
-                                    >
-                                        알맞은 Email 형식입니다.
-                                    </span>
-                                ) : (
-                                    <span
-                                        style={{
-                                            color: "red",
-                                            marginLeft: "10px",
-                                            fontSize: "0.5rem",
-                                        }}
-                                    >
-                                        알맞은 Email 형식으로 입력해주세요.
-                                    </span>
-                                )}
-                            </label>
-                            <input
-                                name="email"
-                                id="email"
-                                type="text"
-                                placeholder="example@email.com"
-                                onChange={handleEmailChange}
+                            <Email
+                                isValidEmail={isValidEmail}
+                                setEmailValue={setEmailValue}
+                                setIsValidEmail={setIsValidEmail}
                             />
-                            <label htmlFor="password">
-                                Password{" "}
-                                {isValidPassword ? (
-                                    <span
-                                        style={{
-                                            color: "blue",
-                                            marginLeft: "10px",
-                                            fontSize: "0.5rem",
-                                        }}
-                                    >
-                                        알맞은 비밀번호입니다.
-                                    </span>
-                                ) : (
-                                    <span
-                                        style={{
-                                            color: "red",
-                                            marginLeft: "10px",
-                                            fontSize: "0.5rem",
-                                        }}
-                                    >
-                                        영어와 숫자를 포함하여 6자 이상
-                                        입력해주세요.
-                                    </span>
-                                )}
-                            </label>
-                            <input
-                                name="password"
-                                id="password"
-                                type="password"
-                                placeholder="password"
-                                onChange={handlePasswordChange}
+                            <Password
+                                setPasswordValue={setPasswordValue}
+                                setIsValidPassword={setIsValidPassword}
+                                setConfirmPasswordValue={
+                                    setConfirmPasswordValue
+                                }
+                                isValidConfirmPassword={isValidConfirmPassword}
+                                setIsValidConfirmPassword={
+                                    setIsValidConfirmPassword
+                                }
+                                passwordValue={passwordValue}
+                                isValidPassword={isValidPassword}
                             />
-                            <label htmlFor="Confirmpassword">
-                                Password{" "}
-                                {isValidConfirmPassword && isValidPassword ? (
-                                    <span
-                                        style={{
-                                            color: "blue",
-                                            marginLeft: "10px",
-                                            fontSize: "0.5rem",
-                                        }}
-                                    >
-                                        비밀번호가 일치합니다.
-                                    </span>
-                                ) : passwordValue.length > 0 ? (
-                                    <span
-                                        style={{
-                                            color: "red",
-                                            marginLeft: "10px",
-                                            fontSize: "0.5rem",
-                                        }}
-                                    >
-                                        비밀번호가 불일치합니다.
-                                    </span>
-                                ) : (
-                                    ""
-                                )}
-                            </label>
-                            <input
-                                name="password"
-                                id="Confirmpassword"
-                                type="password"
-                                placeholder="confirm password"
-                                onChange={handleConfirmPasswordChange}
-                            />
-                            <p>specialize</p>
-                            <div className="specialize">
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option1"
-                                        name="specialize"
-                                        value="게임개발"
-                                    />
-                                    <label htmlFor="option1">게임개발</label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option2"
-                                        name="specialize"
-                                        value="데이터분석"
-                                    />
-                                    <label htmlFor="option2">데이터분석</label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option3"
-                                        name="specialize"
-                                        value="데이터엔지니어"
-                                    />
-                                    <label htmlFor="option3">
-                                        {" "}
-                                        데이터엔지니어
-                                    </label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option4"
-                                        name="specialize"
-                                        value="백엔드/서버개발"
-                                    />
-                                    <label htmlFor="option4">
-                                        백엔드/서버개발
-                                    </label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option5"
-                                        name="specialize"
-                                        value="보안"
-                                    />
-                                    <label htmlFor="option5">보안</label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option6"
-                                        name="specialize"
-                                        value="앱개발"
-                                    />
-                                    <label htmlFor="option6">앱개발</label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option7"
-                                        name="specialize"
-                                        value="퍼블리셔"
-                                    />
-                                    <label htmlFor="option7"> 퍼블리셔</label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option8"
-                                        name="specialize"
-                                        value="프론트엔드"
-                                    />
-                                    <label htmlFor="option8">프론트엔드</label>
-                                </div>
-                                <div>
-                                    <input
-                                        type="radio"
-                                        id="option9"
-                                        name="specialize"
-                                        value="풀스택개발"
-                                    />
-                                    <label htmlFor="option9">풀스택개발</label>
-                                </div>
-                            </div>
+                            <Specialize />
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>
