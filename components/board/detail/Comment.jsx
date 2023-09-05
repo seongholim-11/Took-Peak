@@ -1,13 +1,19 @@
 "use client";
 
+// react
 import React, { useState, useEffect } from "react";
-import { BsFillSendFill } from "react-icons/bs";
+// components
 import AllComment from "./AllComment";
+import NotLoginUser from "@/components/user/NotLoginUser";
+// bootstrap
 import Container from "react-bootstrap/Container";
+import Modal from "react-bootstrap/Modal";
+// react-icons
+import { BsFillSendFill } from "react-icons/bs";
 
 import "./comment.scss";
 
-// Detail 페이지로부터 받아오는 해당 글의 정보들 
+// Detail 페이지로부터 받아오는 해당 글의 정보들
 export default function Comment({ result }) {
     // 사용자가 입력하는 댓글
     const [comment, setComment] = useState("");
@@ -17,6 +23,10 @@ export default function Comment({ result }) {
     const [errorMessage, setErrorMessage] = useState("");
     // 댓글을 입력하고 댓글 목록이 업데이트 되도록 하는 상태값
     const [updateComment, setUpdateComment] = useState(false);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
 
     // 댓글의 부모 글 확인을 위해 ID 값
     const { _id } = result;
@@ -39,17 +49,18 @@ export default function Comment({ result }) {
                 setErrorMessage("");
                 // 댓글 목록 업데이트를 위해 상태값 변화
                 setUpdateComment(true);
-            // 서버와의 통신이 실패하면
+                // 서버와의 통신이 실패하면
             } else {
                 // 서버로부터 오류 메시지 저장
                 const errorData = await response.json();
                 // 입력창 초기화
-                setComment("")
+                setComment("");
+                setShow(true);
                 // 오류 메시지 state에 저장
                 setErrorMessage(errorData);
             }
         } catch (error) {
-            setComment("")
+            setComment("");
             console.error("Error:", error);
         }
     };
@@ -83,6 +94,14 @@ export default function Comment({ result }) {
 
     return (
         <Container>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>SIGN UP & LOGIN</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <NotLoginUser />
+                </Modal.Body>
+            </Modal>
             <div className="comment">
                 {/* 댓글 목록 */}
                 <AllComment allComment={allComment} />

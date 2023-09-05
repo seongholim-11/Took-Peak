@@ -29,7 +29,6 @@ function WriteForm() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     // 업로드 완료 후 페이지 이동을 위한 useRouter
     const router = useRouter();
@@ -88,7 +87,6 @@ function WriteForm() {
             const errorResponse = await response.json();
             alert(errorResponse);
             setShow(true);
-            console.log(show);
             // 오류 처리
         }
     };
