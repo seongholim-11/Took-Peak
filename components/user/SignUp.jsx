@@ -44,9 +44,13 @@ export default function SignUp({ show, handleClose }) {
 
         data = { name, email, password, avatar, specialize };
 
-        // 제목과 내용이 비어있으면 경고 메시지 출력
-        if (!name || !specialize) {
-            alert("이름과 specialize는 필수 입력 사항입니다.");
+        // name과 specialize이 비어있으면 경고 메시지 출력
+        if (!name) {
+            alert("nickname은 필수 입력 사항입니다.");
+            return;
+        }
+        if (!specialize) {
+            alert("specialize는 필수 입력 사항입니다.");
             return;
         }
         if (isValidEmail && isValidPassword && confirmPasswordValue) {
