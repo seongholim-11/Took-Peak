@@ -1,4 +1,4 @@
-'tookpeak 커뮤니티를 소개하는 내용을 담은 컴포넌트'
+// tookpeak 커뮤니티를 소개하는 내용을 담은 컴포넌트
 
 "use client";
 

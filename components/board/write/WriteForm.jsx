@@ -207,7 +207,7 @@ function WriteForm() {
                         />
                     </Form.Group>
                     {/* 조회수를 위한 input 태그 */}
-                    <input type="hidden" name="view" value={0} />
+                    <input type="number" name="view" value={0} />
                 </Form>
             )}
         </Container>
