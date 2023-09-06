@@ -85,15 +85,21 @@ export default function List() {
                                             src={item.image}
                                         />
                                         <Card.Body>
-                                            <Card.Title>
-                                                {item.title}
-                                            </Card.Title>
-                                            <Card.Text>
-                                                {truncateString(
-                                                    item.content,
-                                                    30
-                                                )}
-                                            </Card.Text>
+                                            <div className="titletext">
+                                                <Card.Title>
+                                                    {item.title}
+                                                </Card.Title>
+                                                <Card.Text>
+                                                    {truncateString(
+                                                        item.content,
+                                                        30
+                                                    )}
+                                                </Card.Text>
+                                            </div>
+                                            <div className="authorview">
+                                                <div className="author">{item.author}</div>
+                                                <div className="view">view: {item.view}</div>
+                                            </div>
                                         </Card.Body>
                                     </Card>
                                 </Link>

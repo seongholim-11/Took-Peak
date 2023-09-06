@@ -88,6 +88,19 @@
                     height: 60%;
                     padding: 10px;
                 }
+                .card-body{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .titletext{
+                        .card-title{margin-bottom: 20px;}
+                        .card-text{}
+                    }
+                    .authorview{
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
             }
         }
     }
