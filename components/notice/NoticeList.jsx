@@ -5,7 +5,6 @@
 // react&next
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 // components
 import Pagination from "@/components/board/Pagination";
 // bootstrap
@@ -24,10 +23,6 @@ export default function List() {
     const [searchPageCnt, setSearchPageCnt] = useState(1);
     // 로딩 유무
     const [loading, setLoading] = useState(true);
-
-    // 어떤 카테고리인지 알 수 있게 url에서 카테고리 데이터 저장하기
-    const pathname = usePathname();
-    const result = pathname.substr(7);
 
     // 서버로부터 게시글 데이터 받아오기
     useEffect(() => {
@@ -74,6 +69,7 @@ export default function List() {
                             .slice(0)
                             .reverse()
                             .map((item, idx) => {
+                                let createdAt = item.createdAt.substr(0, 10);
                                 return (
                                     <tbody key={idx}>
                                         <tr>
@@ -90,7 +86,7 @@ export default function List() {
                                                 </Link>
                                             </td>
                                             <td className="td3">
-                                                {item.createdAt}
+                                                {createdAt}
                                             </td>
                                             <td className="td4">
                                                 {item.author}

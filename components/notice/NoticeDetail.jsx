@@ -16,6 +16,7 @@ import "./noticedetail.scss";
 
 // 게시판의 게시글 상세페이지로부터 게시글 정보를 props로 받아옴
 export default function Detail({ result }) {
+    let createdAt = result.createdAt.substr(0, 10);
 
     return (
         <Container>
@@ -34,7 +35,7 @@ export default function Detail({ result }) {
                     </div>
                     <div className="info">
                         <div className="creatView">
-                            <span className="create">작성일: {result.createdAt}</span>{" "}
+                            <span className="create">작성일: {createdAt}</span>{" "}
                             <RxDotFilled />{" "}
                             <span className="view">조회수: {result.view}</span>
                         </div>

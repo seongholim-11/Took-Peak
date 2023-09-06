@@ -73,6 +73,7 @@ export default function List() {
                             </tr>
                         </thead>
                         {allList.map((item, idx) => {
+                            let createdAt = item.createdAt.substr(0, 10);
                             return (
                                 <tbody key={idx}>
                                     <tr>
@@ -89,7 +90,7 @@ export default function List() {
                                             </Link>
                                         </td>
                                         <td className="td3">
-                                            {item.createdAt}
+                                            {createdAt}
                                         </td>
                                         <td className="td4">{item.author}</td>
                                         <td className="td5">{item.view}</td>

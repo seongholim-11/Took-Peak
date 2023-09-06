@@ -21,6 +21,7 @@ export default function Detail({ result }) {
     function onBackClick() {
         router.back();
     }
+    let createdAt = result.createdAt.substr(0, 10);
     return (
         <Container>
             <div className="boardDetailWrap">
@@ -37,7 +38,7 @@ export default function Detail({ result }) {
                     <div className="info">
                         <div className="creatView">
                             <span className="create">
-                                작성일: {result.createdAt}
+                                작성일: {createdAt}
                             </span>{" "}
                             <RxDotFilled />{" "}
                             <span className="view">조회수: {result.view}</span>
