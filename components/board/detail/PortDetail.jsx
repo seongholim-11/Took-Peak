@@ -3,7 +3,7 @@
 
 // next&react
 import React from "react";
-import Link from "next/link";
+import { useRouter } from 'next/navigation'
 // 부트스트랩
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -15,16 +15,17 @@ import "@/components/board/detail/portDetail.scss";
 
 // 게시판의 게시글 상세페이지로부터 게시글 정보를 props로 받아옴
 export default function Detail({ result }) {
-
+    const router = useRouter()
+    function onBackClick() {
+        router.back();
+      }
     return (
         <Container>
             <div className="wrap">
                 <div className="prev">
-                    <Link href="/board/portfolio">
-                        <Button variant="outline-primary">
+                        <Button variant="outline-primary" onClick={onBackClick}>
                             <BiArrowBack />
                         </Button>
-                    </Link>
                 </div>
                 <div className="detailWrap">
                     <div className="title">

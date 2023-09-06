@@ -8,18 +8,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // components
 import Pagination from "@/components/board/Pagination";
+// zustand
+import usePageStore from "@/stores/page";
 // bootstrap
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 // scss
-import './board.scss'
+import "./board.scss";
 
 export default function List() {
+    // 페이지네이션을 위한 state, 상세페이지에서 뒤로 갈 때 state가 초기화되지 않게 zustand 사용
+    const { pageValue } = usePageStore();
+    console.log("🚀 ~ file: List.jsx:23 ~ List ~ pageValue:", pageValue)
     // 서버로부터 요청해서 받아온 게시글 데이터
     const [allList, setAllList] = useState([]);
-    // 페이지네이션을 위한 state
-    const [page, setPage] = useState(1);
     // 페이지네이션을 위한 모든 글의 개수
     const [searchPageCnt, setSearchPageCnt] = useState(1);
     // 로딩 유무
@@ -35,7 +38,7 @@ export default function List() {
             try {
                 // 어떤 카테고리인지와 몇 페이지인지를 쿼리 스트링으로 전달
                 const response = await fetch(
-                    `/api/get/boardlist?board=${result}&page=${page}`
+                    `/api/get/boardlist?board=${result}&page=${pageValue}`
                 );
                 if (response.ok) {
                     const data = await response.json();
@@ -52,7 +55,7 @@ export default function List() {
         };
         getBoard();
         // 페이지가 달라질 때마다 서버에 데이터 요청
-    }, [page]);
+    }, [pageValue]);
 
     return (
         <Container className="boardlist">
@@ -71,36 +74,32 @@ export default function List() {
                             </tr>
                         </thead>
                         {allList.map((item, idx) => {
-                                return (
-                                    <tbody key={idx}>
-                                        <tr>
-                                            {/* 페이지가 달라져도 글 번호가 이어질 수 있는 수식 */}
-                                            <td className="td1">
-                                                {idx + (page - 1) * 10 + 1}
-                                            </td>
-                                            <td className="td2">
-                                                {/* 제목을 클릭하면 해당 글 상세페이지로 이동 */}
-                                                <Link
-                                                    href={`/board/${result}/${item._id}`}
-                                                >
-                                                    {item.title}
-                                                </Link>
-                                            </td>
-                                            <td className="td3">
-                                                {item.createdAt}
-                                            </td>
-                                            <td className="td4">
-                                                {item.author}
-                                            </td>
-                                            <td className="td5">{item.view}</td>
-                                        </tr>
-                                    </tbody>
-                                );
-                            })}
+                            return (
+                                <tbody key={idx}>
+                                    <tr>
+                                        {/* 페이지가 달라져도 글 번호가 이어질 수 있는 수식 */}
+                                        <td className="td1">
+                                            {idx + (pageValue - 1) * 9 + 1}
+                                        </td>
+                                        <td className="td2">
+                                            {/* 제목을 클릭하면 해당 글 상세페이지로 이동 */}
+                                            <Link
+                                                href={`/board/${result}/${item._id}`}
+                                            >
+                                                {item.title}
+                                            </Link>
+                                        </td>
+                                        <td className="td3">
+                                            {item.createdAt}
+                                        </td>
+                                        <td className="td4">{item.author}</td>
+                                        <td className="td5">{item.view}</td>
+                                    </tr>
+                                </tbody>
+                            );
+                        })}
                     </Table>
                     <Pagination
-                        page={page}
-                        setPage={setPage}
                         searchPageCnt={searchPageCnt}
                     />
                 </div>

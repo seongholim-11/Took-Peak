@@ -3,15 +3,18 @@
 "use client";
 
 import Pagination from "react-js-pagination";
+// zustand
+import usePageStore from "@/stores/page";
 
-export default function SearchPagination({ page, setPage, searchPageCnt }) {
+export default function SearchPagination({ searchPageCnt }) {
+    const { pageValue, setPageValue } = usePageStore();
     const handlePageChange = (page) => {
-        setPage(page);
+        setPageValue(page);
     };
 
     return (
         <Pagination
-            activePage={page}
+            activePage={pageValue}
             itemsCountPerPage={9}
             totalItemsCount={searchPageCnt}
             pageRangeDisplayed={9}

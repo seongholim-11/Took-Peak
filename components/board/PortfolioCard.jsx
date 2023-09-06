@@ -8,6 +8,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // components
 import Pagination from "@/components/board/Pagination";
+// zustand
+import usePageStore from "@/stores/page";
 // bootstrap
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
@@ -16,10 +18,10 @@ import Card from "react-bootstrap/Card";
 import "./board.scss";
 
 export default function List() {
+    // 페이지네이션을 위한 state, 상세페이지에서 뒤로 갈 때 state가 초기화되지 않게 zustand 사용
+    const { pageValue } = usePageStore();
     // 서버로부터 요청해서 받아온 게시글 데이터
     const [allList, setAllList] = useState([]);
-    // 페이지네이션을 위한 state
-    const [page, setPage] = useState(1);
     // 페이지네이션을 위한 모든 글의 개수
     const [searchPageCnt, setSearchPageCnt] = useState(1);
     // 로딩 유무
@@ -44,7 +46,7 @@ export default function List() {
             try {
                 // 어떤 카테고리인지와 몇 페이지인지를 쿼리 스트링으로 전달
                 const response = await fetch(
-                    `/api/get/boardlist?board=${result}&page=${page}`
+                    `/api/get/boardlist?board=${result}&page=${pageValue}`
                 );
                 if (response.ok) {
                     const data = await response.json();
@@ -61,7 +63,7 @@ export default function List() {
         };
         getBoard();
         // 페이지가 달라질 때마다 서버에 데이터 요청
-    }, [page]);
+    }, [pageValue]);
 
     return (
         <Container className="portfoliocard">
@@ -97,8 +99,12 @@ export default function List() {
                                                 </Card.Text>
                                             </div>
                                             <div className="authorview">
-                                                <div className="author">{item.author}</div>
-                                                <div className="view">view: {item.view}</div>
+                                                <div className="author">
+                                                    {item.author}
+                                                </div>
+                                                <div className="view">
+                                                    view: {item.view}
+                                                </div>
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -106,11 +112,7 @@ export default function List() {
                             );
                         })}
                     </div>
-                    <Pagination
-                        page={page}
-                        setPage={setPage}
-                        searchPageCnt={searchPageCnt}
-                    />
+                    <Pagination searchPageCnt={searchPageCnt} />
                 </div>
             )}
         </Container>
