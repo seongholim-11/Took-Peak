@@ -1,6 +1,7 @@
 import { connectDB } from "@/util/database";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
+import dayjs from "dayjs";
 
 export default async function handler(req, res) {
     if (req.method === "POST") {
@@ -8,7 +9,9 @@ export default async function handler(req, res) {
             let session = await getServerSession(req, res, authOptions);
             console.log("🚀 ~ file: upload.js:9 ~ handler ~ session:", session);
 
-            const currentDate = new Date(); // 현재 시간 정보 생성
+            dayjs.locale("ko");
+            currentDate = dayjs().format("YYYY. MM. DD. dddd. HH:mm");
+            /* const currentDate = new Date(); // 현재 시간 정보 생성
             const formattedDate = `${currentDate.getFullYear()}-${(
                 currentDate.getMonth() + 1
             )
@@ -25,7 +28,7 @@ export default async function handler(req, res) {
                 .padStart(2, "0")}:${currentDate
                 .getSeconds()
                 .toString()
-                .padStart(2, "0")}`;
+                .padStart(2, "0")}`; */
 
             if (session !== null) {
                 const body = JSON.parse(req.body);
