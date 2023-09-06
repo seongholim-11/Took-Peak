@@ -20,7 +20,6 @@ import "./board.scss";
 export default function List() {
     // 페이지네이션을 위한 state, 상세페이지에서 뒤로 갈 때 state가 초기화되지 않게 zustand 사용
     const { pageValue } = usePageStore();
-    console.log("🚀 ~ file: List.jsx:23 ~ List ~ pageValue:", pageValue)
     // 서버로부터 요청해서 받아온 게시글 데이터
     const [allList, setAllList] = useState([]);
     // 페이지네이션을 위한 모든 글의 개수
