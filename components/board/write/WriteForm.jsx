@@ -15,14 +15,17 @@ import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
 // scss
 import "./write.scss";
+import ImageUpload from "./ImageUpload";
 
 function WriteForm() {
-    // 게시글에 첨부할 수 있는 최대 이미지 크기
-    const MAX_FILE_SIZE = 1048576; // 1MB
-    // aws에 업로드된 이미지의 미리보기 url 저장
-    const [src, setSrc] = useState("/image/write/Frame.png");
+    // aws에 업로드된 이미지 url 저장
+    const [src, setSrc] = useState("");
     // 게시글이 업로드될 카테고리가 저장되는 state
     const [selectValue, setSelectValue] = useState("");
+    // 포트폴리오 이미지 정보
+    const [imgInfo, setImgInfo] = useState({});
+    // 포트폴리오 이미지 정보
+    const [imgFile, setImgFile] = useState({});
     // 로딩 중(spin) 유뮤를 위한 state
     const [loading, setLoading] = useState(true);
 
@@ -43,9 +46,54 @@ function WriteForm() {
         setLoading(false);
     }, []);
 
+    async function imageUpload() {
+        const res = imgInfo;
+        const file = imgFile;
+
+        //S3 업로드
+        /* new FormData() => 폼을 쉽게 보내도록 도와주는 객체 */
+        const formData = new FormData();
+
+        /* 필수 필드와 선택한 파일을 FormData에 추가, Object.entries() // 모든 프로퍼티와 값을 배열로 반환함 */
+        Object.entries({
+            ...res.fields,
+            file,
+        }).forEach(([key, value]) => {
+            formData.append(key, value);
+        });
+
+        try {
+            /* FormData를 서버 URL로 POST 요청하여 파일을 S3에 업로드 */
+            const result = await fetch(res.url, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (result.ok) {
+                /* URI로 데이터를 전달하기 위해서 문자열을 인코딩 */
+                const filename = encodeURIComponent(file.name);
+                /* 이미지의 URL을 업데이트 */
+                const imageUrl = result.url + "/" + filename;
+                return imageUrl; // 이미지 업로드가 성공하면 URL을 반환
+            } else {
+                console.error("이미지 업로드 실패");
+                return null; // 실패 시 null 반환
+            }
+        } catch (error) {
+            console.error("이미지 업로드 오류:", error);
+            return null;
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault(); // 폼 기본 제출 동작 막기
 
+        // 이미지 업로드를 기다림
+        const imageUrl = await imageUpload();
+        console.log(
+            "🚀 ~ file: WriteForm.jsx:93 ~ handleSubmit ~ imageUrl:",
+            imageUrl
+        );
         // 글 작성이 실패하거나 성공할 때 메시지를 전송하고 싶어서 함수로 만들었고
         // FormData() 함수가 제대로 작동하지 않아서 아래와 같은 방법을 사용함.
 
@@ -57,9 +105,8 @@ function WriteForm() {
         const view = e.target.view.value;
 
         // 포트폴리오 게시글만 사진이 첨부되기 때문에 if문으로 구분
-        if (src) {
-            const image = src;
-            data = { title, content, board, view, image };
+        if (imageUrl) {
+            data = { title, content, board, view, image: imageUrl };
         } else {
             data = { title, content, board, view };
         }
@@ -130,83 +177,12 @@ function WriteForm() {
                             value={`${selectValue}`}
                         />
                     </Form.Group>
-                    {selectValue === "portfolio" ? (
-                        <Form.Group>
-                            <Form.Group>
-                                <Form.Label>
-                                    포트폴리오 사진을 첨부해주세요.{" "}
-                                    <sub style={{ color: "red" }}>
-                                        *사진의 크기는 1MB 이하만 첨부
-                                        가능합니다.
-                                    </sub>
-                                </Form.Label>
-                                <Form.Control
-                                    type="file"
-                                    id="board"
-                                    /* 서버로 데이터를 전송할 때 사용 */
-                                    name="boardimage"
-                                    /* 이미지 파일만 선택 가능 */
-                                    accept="image/*"
-                                    onChange={async (e) => {
-                                        /* 내용이 1개인 배열 */
-                                        let file = e.target.files[0];
-                                        if (file.size > MAX_FILE_SIZE) {
-                                            alert(
-                                                "파일 크기가 1MB를 초과합니다."
-                                            );
-                                            return;
-                                        }
-                                        /* URI로 데이터를 전달하기 위해서 문자열을 인코딩 */
-                                        let filename = encodeURIComponent(
-                                            file.name
-                                        );
-                                        /* 서버에 선택한 파일 이름을 전달하여 업로드를 위한 필수 정보를 요청 */
-                                        let res = await fetch(
-                                            "/api/post/board?file=" + filename
-                                        );
-                                        /* 서버 응답을 JSON 형태로 파싱하여 필요한 정보를 추출 */
-                                        res = await res.json();
-
-                                        //S3 업로드
-                                        /* new FormData() => 폼을 쉽게 보내도록 도와주는 객체 */
-                                        const formData = new FormData();
-
-                                        /* 
-                                    필수 필드와 선택한 파일을 FormData에 추가 
-                                    Object.entries() // 모든 프로퍼티와 값을 배열로 반환함
-                                    */
-                                        Object.entries({
-                                            ...res.fields,
-                                            file,
-                                        }).forEach(([key, value]) => {
-                                            formData.append(key, value);
-                                        });
-
-                                        /* FormData를 서버 URL로 POST 요청하여 파일을 S3에 업로드 */
-                                        let result = await fetch(res.url, {
-                                            method: "POST",
-                                            body: formData,
-                                        });
-
-                                        if (result.ok) {
-                                            /* 이미지의 URL을 업데이트 */
-                                            setSrc(result.url + "/" + filename);
-                                        } else {
-                                            console.log("실패");
-                                        }
-                                    }}
-                                />
-                            </Form.Group>
-                            {/* 사진 미리보기 */}
-                            <div className="preview">
-                                <img src={src} />
-                            </div>
-                            {/* 업로드된 사진 url을 저장하기 위한 input 태그 */}
-                            <input type="hidden" name="image" value={src} />
-                        </Form.Group>
-                    ) : (
-                        <div></div>
-                    )}
+                    <ImageUpload
+                        src={src}
+                        selectValue={selectValue}
+                        setImgFile={setImgFile}
+                        setImgInfo={setImgInfo}
+                    />
                     <Form.Group className="title">
                         <Form.Control
                             type="text"

@@ -12,7 +12,7 @@ export default function SearchPagination({ page, setPage, searchPageCnt }) {
     return (
         <Pagination
             activePage={page}
-            itemsCountPerPage={10}
+            itemsCountPerPage={9}
             totalItemsCount={searchPageCnt}
             pageRangeDisplayed={9}
             prevPageText={"‹"}

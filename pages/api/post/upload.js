@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     if (req.method === "POST") {
         try {
             let session = await getServerSession(req, res, authOptions);
-            console.log("🚀 ~ file: upload.js:9 ~ handler ~ session:", session)
+            console.log("🚀 ~ file: upload.js:9 ~ handler ~ session:", session);
 
             const currentDate = new Date(); // 현재 시간 정보 생성
             const formattedDate = `${currentDate.getFullYear()}-${(
@@ -15,6 +15,15 @@ export default async function handler(req, res) {
                 .toString()
                 .padStart(2, "0")}-${currentDate
                 .getDate()
+                .toString()
+                .padStart(2, "0")} ${currentDate
+                .getHours()
+                .toString()
+                .padStart(2, "0")}:${currentDate
+                .getMinutes()
+                .toString()
+                .padStart(2, "0")}:${currentDate
+                .getSeconds()
                 .toString()
                 .padStart(2, "0")}`;
 

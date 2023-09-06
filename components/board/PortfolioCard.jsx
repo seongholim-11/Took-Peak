@@ -72,36 +72,33 @@ export default function List() {
             ) : (
                 <div>
                     <div className="cardWrap">
-                        {allList
-                            .slice(0)
-                            .reverse()
-                            .map((item, idx) => {
-                                return (
-                                    <Link
-                                        // 제목을 클릭하면 해당 글 상세페이지로 이동
-                                        href={`/board/portfolio/${item._id}`}
-                                        key={idx}
-                                    >
-                                        <Card>
-                                            <Card.Img
-                                                variant="top"
-                                                src={item.image}
-                                            />
-                                            <Card.Body>
-                                                <Card.Title>
-                                                    {item.title}
-                                                </Card.Title>
-                                                <Card.Text>
-                                                    {truncateString(
-                                                        item.content,
-                                                        30
-                                                    )}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Link>
-                                );
-                            })}
+                        {allList.map((item, idx) => {
+                            return (
+                                <Link
+                                    // 제목을 클릭하면 해당 글 상세페이지로 이동
+                                    href={`/board/portfolio/${item._id}`}
+                                    key={idx}
+                                >
+                                    <Card>
+                                        <Card.Img
+                                            variant="top"
+                                            src={item.image}
+                                        />
+                                        <Card.Body>
+                                            <Card.Title>
+                                                {item.title}
+                                            </Card.Title>
+                                            <Card.Text>
+                                                {truncateString(
+                                                    item.content,
+                                                    30
+                                                )}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
+                            );
+                        })}
                     </div>
                     <Pagination
                         page={page}

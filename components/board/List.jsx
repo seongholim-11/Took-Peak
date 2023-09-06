@@ -70,10 +70,7 @@ export default function List() {
                                 <td>조회수</td>
                             </tr>
                         </thead>
-                        {allList
-                            .slice(0)
-                            .reverse()
-                            .map((item, idx) => {
+                        {allList.map((item, idx) => {
                                 return (
                                     <tbody key={idx}>
                                         <tr>

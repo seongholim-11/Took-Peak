@@ -13,7 +13,9 @@ export default async function handler(req, res) {
             const result = await db
                 .collection("post")
                 .find({ board })
+                .sort({ createdAt: -1 })
                 .skip(perPage * (page - 1))
+                // .sort({ createdAt: 1 })
                 .limit(perPage)
                 .toArray(); // find 결과를 배열로 변환하여 가져옵니다.
             // 성공 시 결과 전달
