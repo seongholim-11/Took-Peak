@@ -11,11 +11,15 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
+import Button from "react-bootstrap/Button";
+// react-icons
+import { FaExternalLinkAlt } from "react-icons/fa";
 // scss
 import "./mainboard.scss";
+import Link from "next/link";
 
 export default function Board() {
-    // 누른 탭메뉴가 무엇인지 저장하는 state 
+    // 누른 탭메뉴가 무엇인지 저장하는 state
     const [activeTab, setActiveTab] = useState("free");
     // 서버와 DB로부터 3개씩 받아오는 카테고리별 게시글
     const [boardData, setBoardData] = useState([]);
@@ -43,45 +47,75 @@ export default function Board() {
 
     return (
         <div className="board">
-            <Title title={'게시판'}/>
+            <Title title={"게시판"} activeTab={activeTab} />
             <Tab.Container id="left-tabs-example" defaultActiveKey="free">
                 <Row>
                     <Col sm={3} className="category">
                         <Nav variant="pills" className="flex-column">
-                            <Nav.Item>
-                                <Nav.Link
-                                    eventKey="free"
-                                    onClick={() => setActiveTab("free")}
-                                >
-                                    자유
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    eventKey="collaboration"
-                                    onClick={() =>
-                                        setActiveTab("collaboration")
-                                    }
-                                >
-                                    협업
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    eventKey="portfolio"
-                                    onClick={() => setActiveTab("portfolio")}
-                                >
-                                    포트폴리오
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link
-                                    eventKey="question"
-                                    onClick={() => setActiveTab("question")}
-                                >
-                                    질문
-                                </Nav.Link>
-                            </Nav.Item>
+                            <div className="category-flex">
+                                <Nav.Item>
+                                    <Nav.Link
+                                        eventKey="free"
+                                        onClick={() => setActiveTab("free")}
+                                    >
+                                        자유
+                                    </Nav.Link>
+                                </Nav.Item>
+                                <Link href={'/board/free'}>
+                                    <Button variant="outline-primary">
+                                        <FaExternalLinkAlt/>
+                                    </Button>
+                                </Link>
+                            </div>
+                            <div className="category-flex">
+                                <Nav.Item>
+                                    <Nav.Link
+                                        eventKey="collaboration"
+                                        onClick={() =>
+                                            setActiveTab("collaboration")
+                                        }
+                                    >
+                                        협업
+                                    </Nav.Link>
+                                </Nav.Item>
+                                <Link href={'/board/collaboration'}>
+                                    <Button variant="outline-primary">
+                                        <FaExternalLinkAlt/>
+                                    </Button>
+                                </Link>
+                            </div>
+                            <div className="category-flex">
+                                <Nav.Item>
+                                    <Nav.Link
+                                        eventKey="portfolio"
+                                        onClick={() =>
+                                            setActiveTab("portfolio")
+                                        }
+                                    >
+                                        포트폴리오
+                                    </Nav.Link>
+                                </Nav.Item>
+                                <Link href={'/board/portfolio'}>
+                                    <Button variant="outline-primary">
+                                        <FaExternalLinkAlt/>
+                                    </Button>
+                                </Link>
+                            </div>
+                            <div className="category-flex">
+                                <Nav.Item>
+                                    <Nav.Link
+                                        eventKey="question"
+                                        onClick={() => setActiveTab("question")}
+                                    >
+                                        질문
+                                    </Nav.Link>
+                                </Nav.Item>
+                                <Link href={'/board/question'}>
+                                    <Button variant="outline-primary">
+                                        <FaExternalLinkAlt/>
+                                    </Button>
+                                </Link>
+                            </div>
                         </Nav>
                     </Col>
                     <Col className="tabBody">

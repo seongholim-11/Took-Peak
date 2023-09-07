@@ -11,18 +11,44 @@
             rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     }
 
-    .category {
-        margin-right: 15px;
+    .row {
+        min-height: 190px;
+        .category {
+            // margin-right: 15px;
+            flex-basis: 35%;
+            .flex-column {
+                width: 100%;
+                height: 100%;
+                // flex-direction: row;
+                // align-items: center;
+                justify-content: space-between;
+                .category-flex {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    .nav-item {
+                        margin-right: 5px;
+                        flex-basis: 95%;
+                    }
+                    .btn {
+                        flex-basis: 5%;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
     }
     .tabBody {
+        flex-basis: 55%;
         height: 100%;
-    }
-    .tab-content{
-        height: 100%;
+        .tab-content {
+            height: 100%;
+        }
     }
 }
 
 .mainBoardWrap {
+    min-height: 190px;
     background-color: rgba(0, 112, 243);
     padding: 10px;
     border-radius: 20px;
@@ -66,8 +92,19 @@
 @media screen and (max-width: 575px) {
     .board {
         margin: 0 30px 30px;
-        .category {
-            margin-bottom: 15px;
+        .row {
+            flex-direction: column;
+            .category {
+                margin-bottom: 15px;
+                .flex-column {
+                    .category-flex {
+                        width: 100%;
+                        .btn {
+                            margin-right: 0px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
