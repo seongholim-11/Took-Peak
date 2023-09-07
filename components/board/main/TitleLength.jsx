@@ -14,8 +14,10 @@ export default function TabContent({ item }) {
                 setTitleLength(50);
             } else if (newWindowWidth > 769 && newWindowWidth < 991) {
                 setTitleLength(20);
-            } else if (newWindowWidth < 768) {
+            } else if (newWindowWidth > 576 && newWindowWidth < 768) {
                 setTitleLength(15);
+            } else {
+                setTitleLength(10);
             }
         }
 
