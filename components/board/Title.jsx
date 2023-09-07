@@ -10,7 +10,7 @@ import Link from 'next/link';
 function Title({title}) {
   return (
     <Container className='boardtitle'>
-        <div>
+        <div className='titleWrap'>
           <h2>{title}</h2>
           <Link href={'/write'}><Button variant="primary">글쓰기</Button></Link>
         </div>

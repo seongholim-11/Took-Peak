@@ -2,7 +2,7 @@
 .boardtitle {
     margin-top: 30px;
     margin-bottom: 30px;
-    > div {
+    .titleWrap {
         display: flex;
         justify-content: space-between;
         h2 {
@@ -84,19 +84,22 @@
             margin: 10px;
             .card {
                 height: 100%;
-                .card-img-top{
+                .card-img-top {
                     height: 60%;
                     padding: 10px;
                 }
-                .card-body{
+                .card-body {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    .titletext{
-                        .card-title{margin-bottom: 20px;}
-                        .card-text{}
+                    .titletext {
+                        .card-title {
+                            margin-bottom: 20px;
+                        }
+                        .card-text {
+                        }
                     }
-                    .authorview{
+                    .authorview {
                         display: flex;
                         justify-content: space-between;
                     }
@@ -232,8 +235,14 @@ ul {
 }
 
 @media screen and (max-width: 575px) {
+    .boardtitle {
+        .titleWrap {
+            margin: 0 30px;
+        }
+    }
     .boardlist {
-        > div {
+        .listWrap {
+            margin: 0 30px;
             .table {
                 thead {
                     tr {

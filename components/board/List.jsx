@@ -61,7 +61,7 @@ export default function List() {
             {loading ? (
                 <Spinner animation="border" size="lg" />
             ) : (
-                <div>
+                <div className="listWrap">
                     <Table hover>
                         <thead>
                             <tr>
