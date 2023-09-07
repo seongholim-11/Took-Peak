@@ -79,7 +79,7 @@ export default function List() {
                                     <tr>
                                         {/* 페이지가 달라져도 글 번호가 이어질 수 있는 수식 */}
                                         <td className="td1">
-                                            {idx + (pageValue - 1) * 9 + 1}
+                                            {searchPageCnt-idx}
                                         </td>
                                         <td className="td2">
                                             {/* 제목을 클릭하면 해당 글 상세페이지로 이동 */}
