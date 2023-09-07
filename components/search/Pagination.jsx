@@ -7,7 +7,6 @@ import './search.scss'
 // /search/page.js로부터 데이터 받음
 export default function SearchPagination({page, setPage, searchPageCnt}) {
 
-
     const handlePageChange = (page) => {
         setPage(page);
         // window.scrollTo({ top: 0, behavior: "smooth" });

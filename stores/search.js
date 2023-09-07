@@ -6,6 +6,8 @@ const useSearchStore = create((set) => ({
   searchButton: false,
   setSearchButtonFalse: () => set({ searchButton: false }),
   setSearchButtonTrue: (searchButton) => set({ searchButton: !searchButton }),
+  page: '',
+  setPage: (value) => set({ page: value }),
 }));
 
 export default useSearchStore;

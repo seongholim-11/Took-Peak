@@ -9,12 +9,12 @@ import { BiSearchAlt2 } from "react-icons/bi";
 // zustand store
 import useSearchStore from "@/stores/search";
 // scss
-import '../search.scss'
+import "../search.scss";
 
 export default function AcademySearch() {
     // 메인페이지에서 검색하면
-    // 
-    const { searchButton, setSearchValue, setSearchButtonTrue } =
+    //
+    const { searchButton, setSearchValue, setSearchButtonTrue, setPage } =
         useSearchStore();
 
     return (
@@ -38,6 +38,7 @@ export default function AcademySearch() {
                             variant="primary"
                             onClick={() => {
                                 // 메인페이지에서 검색을 했다는 것을 검색 페이지에 알려주기 위한 state 변화
+                                setPage(1)
                                 setSearchButtonTrue(searchButton);
                             }}
                         >

@@ -12,11 +12,11 @@ import SearchResult from "../../components/search/SearchResult";
 import Pagination from "../../components/search/Pagination";
 
 export default function page() {
-    const { searchValue, searchButton, setSearchButtonFalse } =
+    const { searchValue, searchButton, setSearchButtonFalse, page, setPage } =
         useSearchStore();
     const [searchResult, setSearchResult] = useState([]);
     const [searchPageCnt, setSearchPageCnt] = useState(1);
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
 
     useEffect(() => {
         const programSearch = async () => {
