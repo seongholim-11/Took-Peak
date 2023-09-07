@@ -12,7 +12,7 @@ export default function Password({
         const value = e.target.value;
 
         // 정규식을 사용하여 이메일 주소 유효성 검사
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{6,}$/;
         const isValid = passwordRegex.test(value);
 
         setPasswordValue(value); // 입력값 업데이트
@@ -53,7 +53,7 @@ export default function Password({
                             fontSize: "0.5rem",
                         }}
                     >
-                        영어와 숫자를 포함하여 6자 이상 입력해주세요.
+                        영어,숫자, 특수문자를 포함하여 6자 이상 입력해주세요.
                     </span>
                 )}
             </label>
