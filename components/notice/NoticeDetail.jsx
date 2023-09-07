@@ -20,7 +20,7 @@ export default function Detail({ result }) {
 
     return (
         <Container>
-            <div className="boardDetailWrap">
+            <div className="noticeDetailWrap">
                 <div className="prev">
                     {/* 뒤로가기 버튼을 누르면 해당 글의 카테고리 페이지로 이동 */}
                     <Link href={`/notice`}>
