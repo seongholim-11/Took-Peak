@@ -74,7 +74,6 @@ export default function SignUp({ show, handleClose }) {
 
         // 이미지 업로드를 기다림
         const imageUrl = await imageUpload();
-        console.log("🚀 ~ file: SignUp.jsx:77 ~ Submit ~ imageUrl:",typeof imageUrl)
 
         // 글 작성이 실패하거나 성공할 때 메시지를 전송하고 싶어서 함수로 만들었고
         // FormData() 함수가 제대로 작동하지 않아서 아래와 같은 방법을 사용함.
@@ -85,9 +84,9 @@ export default function SignUp({ show, handleClose }) {
         const email = emailValue;
         const password = passwordValue;
         const specialize = e.target.specialize.value;
+        const avatar = imageUrl || "/image/main/user/Avatars.png";
 
-        data = { name, email, password, avatar:imageUrl, specialize };
-        console.log("🚀 ~ file: SignUp.jsx:89 ~ Submit ~ data:", data)
+        data = { name, email, password, avatar, specialize };
 
         // name과 specialize이 비어있으면 경고 메시지 출력
         if (!name) {
