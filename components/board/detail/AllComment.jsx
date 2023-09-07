@@ -10,11 +10,12 @@ export default function AllComment({ allComment }) {
             {allComment.length > 0
                 ? /* 글쓴이, 날짜, 댓글 내용 출력 */
                   allComment.map((item, idx) => {
+                    let createdAt = item.createdAt.substr(0, 10);
                       return (
                           <div key={idx} className="commentWrap">
                               <div className="author">
                                   {item.author}
-                                  <span className="time">{item.createdAt}</span>
+                                  <span className="time">{createdAt}</span>
                               </div>
                               <div className="comment">{item.comment}</div>
                           </div>
