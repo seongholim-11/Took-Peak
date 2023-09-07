@@ -41,7 +41,7 @@ export default function Detail({ result }) {
                                 작성일: {createdAt}
                             </span>{" "}
                             <RxDotFilled />{" "}
-                            <span className="view">조회수: {result.view}</span>
+                            <span className="view">조회수: {result.view + 1}</span>
                         </div>
                         <div className="author">글쓴이: {result.author}</div>
                     </div>
