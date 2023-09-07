@@ -28,16 +28,18 @@
         .category {
             display: flex;
             flex-direction: column;
-            margin-right: 30px;
+            margin-right: 20px;
             a {
                 color: #fff;
                 margin-bottom: 10px;
 
                 &.menu {
+                    font-size: 1rem;
+                    color: #eee;
                 }
                 &.submenu {
                     font-size: 0.8rem;
-                    color: #eee;
+                    color: #ccc;
                 }
             }
         }
@@ -48,14 +50,14 @@
             }
             .info {
                 address {
-                    color: #fff;
+                    color: #ccc;
                     margin: 0;
                     font-size: 0.8rem;
                     margin-bottom: 5px;
                 }
             }
             a {
-                color: #fff;
+                color: #ccc;
                 margin-right: 10px;
             }
         }
