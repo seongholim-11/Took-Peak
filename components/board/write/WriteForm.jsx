@@ -18,13 +18,11 @@ import "./write.scss";
 import ImageUpload from "./ImageUpload";
 
 function WriteForm() {
-    // aws에 업로드된 이미지 url 저장
-    const [src, setSrc] = useState("");
     // 게시글이 업로드될 카테고리가 저장되는 state
     const [selectValue, setSelectValue] = useState("");
-    // 포트폴리오 이미지 정보
+    // 포트폴리오 이미지 정보(url)
     const [imgInfo, setImgInfo] = useState({});
-    // 포트폴리오 이미지 정보
+    // 포트폴리오 이미지 정보(input)
     const [imgFile, setImgFile] = useState({});
     // 로딩 중(spin) 유뮤를 위한 state
     const [loading, setLoading] = useState(true);
@@ -90,10 +88,7 @@ function WriteForm() {
 
         // 이미지 업로드를 기다림
         const imageUrl = await imageUpload();
-        console.log(
-            "🚀 ~ file: WriteForm.jsx:93 ~ handleSubmit ~ imageUrl:",
-            imageUrl
-        );
+
         // 글 작성이 실패하거나 성공할 때 메시지를 전송하고 싶어서 함수로 만들었고
         // FormData() 함수가 제대로 작동하지 않아서 아래와 같은 방법을 사용함.
 
@@ -178,7 +173,6 @@ function WriteForm() {
                         />
                     </Form.Group>
                     <ImageUpload
-                        src={src}
                         selectValue={selectValue}
                         setImgFile={setImgFile}
                         setImgInfo={setImgInfo}

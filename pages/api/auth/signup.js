@@ -12,9 +12,6 @@ export default async function handler(req, res) {
             const hash = await bcrypt.hash(data.password, 10);
             data.password = hash;
 
-            // 이미지 URL만을 변수에 저장
-            data.avatar = data.avatar[1];
-
             // 회원정보를 DB에 저장
             const db = (await connectDB).db("forum");
             await db.collection("user_cred").insertOne(data);
