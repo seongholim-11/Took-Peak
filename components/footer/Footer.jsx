@@ -1,9 +1,12 @@
 // react&next
 import React from "react";
 import Link from "next/link";
+// components
+import KakaoQR from './KakaoQR'
 // bootstrap
 import Container from "react-bootstrap/Container";
 // react-icon
+import { AiOutlineMail } from "react-icons/ai"; 
 import { SiTistory } from "react-icons/si";
 import { AiFillGithub } from "react-icons/ai";
 import { FaMountain } from "react-icons/fa";
@@ -78,10 +81,7 @@ export default function Footer() {
                     </div>
                     <div className="connect">
                         <p>connect</p>
-                        <div className="info">
-                            <address>Phone: 010-4463-9110</address>
-                            <address>E-mail: damadu01@gmail.com</address>
-                        </div>
+                        <KakaoQR/>
                         <Link
                             href={"https://github.com/seongholim-11/took-peak"}
                             target="_blank"

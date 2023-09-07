@@ -232,11 +232,6 @@ ul {
 }
 
 @media screen and (max-width: 575px) {
-    .boardtitle > div,
-    .boardlist > div {
-        margin-right: 30px;
-        margin-left: 30px;
-    }
     .boardlist {
         > div {
             .table {
