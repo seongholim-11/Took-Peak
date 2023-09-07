@@ -39,7 +39,7 @@ export default function User() {
     return (
         <div className="user">
             {loading ? (
-                <Spinner animation="border" size="lg" />
+                <Spinner animation="border" size="lg" style={{color: '#0070f3'}}/>
             ) : (
                 <>
                     <img src={userInformation.avatar} alt="profil" />
