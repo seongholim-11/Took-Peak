@@ -16,11 +16,9 @@ export default function tookpeak() {
         <Container>
             <div className="tookpeakWrap">
                 <div className="tookpeakVideo">
-                    <video
-                        src="/image/tookpeak/tookpeak.mp4"
-                        muted
-                        autoPlay
-                    ></video>
+                    <img
+                        src="/image/tookpeak/tookpeak.gif"
+                    ></img>
                     <img
                         src="/image/tookpeak/reflect.png"
                         alt="Reflection"
