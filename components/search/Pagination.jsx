@@ -18,8 +18,10 @@ export default function SearchPagination({page, setPage, searchPageCnt}) {
             itemsCountPerPage={10}
             totalItemsCount={searchPageCnt}
             pageRangeDisplayed={9}
-            prevPageText={"‹"}
-            nextPageText={"›"}
+            prevPageText={"<"}
+            nextPageText={">"}
+            firstPageText={"<<"}
+            lastPageText={">>"}
             onChange={handlePageChange}
         />
     );
