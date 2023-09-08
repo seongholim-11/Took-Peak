@@ -11,6 +11,7 @@ export default async function handler(req, res) {
             const result = await db
                 .collection("post")
                 .find({ board: board.category })
+                .sort({createdAt: -1})
                 .limit(3)
                 .toArray(); // find 결과를 배열로 변환하여 가져옵니다.
             // 성공 시 결과 전달
