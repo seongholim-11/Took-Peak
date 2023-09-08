@@ -68,7 +68,9 @@
 }
 
 @media screen and (max-width: 575px) {
-    .comment {
-        margin: 0 30px 30px;
+    .container {
+        .comment {
+            margin: 0 30px 30px;
+        }
     }
 }

@@ -5,7 +5,7 @@ import "./comment.scss";
 // Comment 컴포넌트로부터 props로 배열로 이루어진 댓글 데이터를 받아옴.
 export default function AllComment({ allComment }) {
     return (
-        <div>
+        <>
             {/* 댓글이 없을 수 있어서 삼항연산자를 사용 */}
             {allComment.length > 0
                 ? /* 글쓴이, 날짜, 댓글 내용 출력 */
@@ -23,6 +23,6 @@ export default function AllComment({ allComment }) {
                   })
                   /* 댓글이 없다면 "댓글이 없습니다." 출력 */
                 : "댓글이 없습니다."}
-        </div>
+        </>
     );
 }
