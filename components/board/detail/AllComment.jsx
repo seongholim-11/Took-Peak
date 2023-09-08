@@ -17,7 +17,7 @@ export default function AllComment({ allComment }) {
                                   {item.author}
                                   <span className="time">{createdAt}</span>
                               </div>
-                              <div className="comment">{item.comment}</div>
+                              <div className="content">{item.comment}</div>
                           </div>
                       );
                   })
