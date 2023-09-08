@@ -4,7 +4,7 @@ export default function Avatar({ setImgInfo, setImgFile }) {
     // 게시글에 첨부할 수 있는 최대 이미지 크기
     const MAX_FILE_SIZE = 1048576; // 1MB
 
-    const [imageUrl, setImageUrl] = useState("/image/write/Frame.png");
+    const [imageUrl, setImageUrl] = useState("/image/main/user/Avatars.png");
 
     // 이미지 파일을 선택했을 때 호출되는 함수
     const handleImageChange = (event) => {
