@@ -1,10 +1,11 @@
 /* list */
 .boardtitle {
-    margin-top: 15px;
+    margin-top: 30px;
     margin-bottom: 15px;
     .titleWrap {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         h4 {
             margin: 0;
         }
@@ -94,14 +95,22 @@
                     justify-content: space-between;
                     .titletext {
                         .card-title {
+                            font-size: 1rem;
                             margin-bottom: 20px;
                         }
                         .card-text {
+                            font-size: 0.6rem;
                         }
                     }
                     .authorview {
                         display: flex;
                         justify-content: space-between;
+                        .author {
+                            font-size: 0.6rem;
+                        }
+                        .view {
+                            font-size: 0.6rem;
+                        }
                     }
                 }
             }
@@ -248,7 +257,7 @@ ul {
 }
 
 @media screen and (max-width: 575px) {
-    .titleWrap{
+    .titleWrap {
         margin: 15px 30px;
     }
     .boardlist {
