@@ -8,10 +8,11 @@
 }
 
 html {
+    font-size: 62.5%;
     body {
         font-family: 'TheJamsil5Bold', cursive;
         line-height: 1.6;
-        font-size: 16px;
+        font-size: 1em;
         box-sizing: border-box;
         p {
             padding: 0;
@@ -44,4 +45,20 @@ html {
             }
         }
     }
+}
+
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 200%; }
 }
