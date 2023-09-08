@@ -82,6 +82,20 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                &:nth-child(1),
+                &:nth-child(2),
+                &:nth-last-child(1),
+                &:nth-last-child(2) {
+                    display: flex;
+                    align-items: center;
+                }
+                &:nth-child(1) a,
+                &:nth-child(2) a,
+                &:nth-last-child(1) a,
+                &:nth-last-child(2) a {
+                    font-size: 1.5rem;
+                    margin-top: 5px;
+                }
                 &:first-child {
                     border-radius: 5px 0 0 5px;
                 }
