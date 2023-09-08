@@ -40,7 +40,7 @@
     .commentWrap {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+
         width: 50%;
         max-width: 650px;
         min-height: 100px;
@@ -51,6 +51,7 @@
         margin-left: auto;
         .author {
             font-size: 0.8rem;
+            margin-bottom: 10px;
             .time {
                 margin-left: 10px;
                 font-size: 0.7rem;
