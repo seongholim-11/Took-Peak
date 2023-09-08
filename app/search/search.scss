@@ -14,6 +14,9 @@
         }
     }
     .searchResultWrap {
+        p {
+            font-size: 0.8rem;
+        }
         background-color: #f0f0f0;
         padding: 20px;
         border-radius: 20px;
@@ -93,7 +96,7 @@
                 &:nth-child(2) a,
                 &:nth-last-child(1) a,
                 &:nth-last-child(2) a {
-                    font-size: 1rem;
+                    font-size: 0.8rem;
                     // margin-top: 5px;
                 }
                 &:first-child {

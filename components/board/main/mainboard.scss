@@ -4,7 +4,7 @@
     padding: 10px 30px 30px;
     border-radius: 20px;
     margin-bottom: 30px;
-    min-height: 340px;
+    min-height: 280px;
     transition: all 0.5s;
     &:hover {
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -21,7 +21,7 @@
                 height: 100%;
                 // flex-direction: row;
                 // align-items: center;
-                justify-content: space-between;
+                justify-content: space-around;
                 .category-flex {
                     display: flex;
                     width: 100%;
@@ -29,6 +29,9 @@
                     .nav-item {
                         margin-right: 5px;
                         flex-basis: 95%;
+                        a {
+                            font-size: 0.8rem;
+                        }
                     }
                     .btn {
                         flex-basis: 5%;
@@ -43,32 +46,32 @@
         height: 100%;
         .tab-content {
             height: 100%;
-        }
-    }
-}
+            font-size: 0.8rem;
+            .mainBoardWrap {
+                min-height: 200px;
+                background-color: rgba(0, 112, 243);
+                padding: 10px;
+                border-radius: 20px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
 
-.mainBoardWrap {
-    min-height: 190px;
-    background-color: rgba(0, 112, 243);
-    padding: 10px;
-    border-radius: 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    .content {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        background-color: #fff;
-        margin: 5px;
-        border-radius: 20px;
-        padding: 10px 20px;
-        .title {
-        }
-        .authorCreate {
-            font-size: 0.7rem;
+                .content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: end;
+                    background-color: #fff;
+                    margin: 5px;
+                    border-radius: 20px;
+                    padding: 10px 20px;
+                    .title {
+                    }
+                    .authorCreate {
+                        font-size: 0.7rem;
+                    }
+                }
+            }
         }
     }
 }
@@ -102,6 +105,13 @@
                         .btn {
                             margin-right: 0px;
                         }
+                    }
+                }
+            }
+            .tabBody {
+                .tab-content {
+                    .mainBoardWrap {
+                        min-height: 160px;
                     }
                 }
             }

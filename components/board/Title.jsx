@@ -11,7 +11,7 @@ function Title({title}) {
   return (
     <Container className='boardtitle'>
         <div className='titleWrap'>
-          <h2>{title}</h2>
+          <h4>{title}</h4>
           <Link href={'/write'}><Button variant="primary">글쓰기</Button></Link>
         </div>
     </Container>
