@@ -57,6 +57,7 @@
     .box2Title {
         flex-basis: 70%;
         h2 {
+            font-size: 1.4rem;
             background: -webkit-linear-gradient(45deg, #bbb, #0070f3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -69,6 +70,7 @@
                 margin-top: 20px;
                 margin-right: 10px;
                 color: #fff;
+                font-size: 0.8rem;
                 background-color: #4b95ea;
                 width: auto;
                 border-radius: 10px;
@@ -111,7 +113,6 @@
     }
     .box2 {
         min-height: 200px;
-        display: block;
         margin: 0 30px 30px;
         .box2Title {
             .sticker {
@@ -119,7 +120,7 @@
             }
         }
         .box2Img {
-            display: none;
+            // display: none;
         }
     }
 }
