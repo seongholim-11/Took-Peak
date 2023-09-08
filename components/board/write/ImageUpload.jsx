@@ -72,7 +72,6 @@ export default function ImageUpload({
                         <img src={imageUrl} />
                     </div>
                     {/* 업로드된 사진 url을 저장하기 위한 input 태그 */}
-                    <input type="hidden" name="image" value={src} />
                 </Form.Group>
             ) : (
                 <div></div>
