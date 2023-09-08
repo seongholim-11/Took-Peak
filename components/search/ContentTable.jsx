@@ -48,7 +48,7 @@ export default function ContentTable({ information, id, cnt }) {
 
     return (
         <div className="detail">
-            <h2>{`${information.trprNm}(${information.trprDegr})`}</h2>
+            <h3>{`${information.trprNm}(${information.trprDegr})`}</h3>
             <div className="content">
                 <Table bordered hover>
                     <tbody>
