@@ -108,6 +108,7 @@ export default function SignUp({ show, handleClose }) {
                 // 성공적으로 서버에 전송됨
                 // 필요한 처리를 수행
                 const successMessage = await response.json();
+                setEmailValue("");
                 alert(successMessage);
                 handleClose();
             } else {
@@ -143,6 +144,7 @@ export default function SignUp({ show, handleClose }) {
                             />
                             <Email
                                 isValidEmail={isValidEmail}
+                                emailValue={emailValue}
                                 setEmailValue={setEmailValue}
                                 setIsValidEmail={setIsValidEmail}
                             />
