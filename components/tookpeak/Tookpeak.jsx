@@ -53,7 +53,7 @@ export default function tookpeak() {
                         </div>
                     </div>
                     <div className="input">
-                        <input type="text" placeholder="Took-Peak for Developer"/>
+                        <input type="text" placeholder="Took-Peak for Developer" disabled/>
                         <button><BsFillSendFill /></button>
                     </div>
                 </div>
