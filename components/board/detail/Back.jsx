@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "react-bootstrap/Button";
 import { BiArrowBack } from "react-icons/bi";
@@ -25,7 +26,7 @@ export default function Back({ result }) {
                 setEdit(false);
             }
         }
-    }, []);
+    }, [session]);
 
     return (
         <div className="ped">
@@ -37,7 +38,7 @@ export default function Back({ result }) {
             </div>
             {edit ? (
                 <div className="ed">
-                    <Button variant="outline-primary">Edit</Button>
+                    <Link href={'/edit/'+ result._id}><Button variant="outline-primary">Edit</Button></Link>
                     <Button variant="outline-danger">Delete</Button>
                 </div>
             ) : (
