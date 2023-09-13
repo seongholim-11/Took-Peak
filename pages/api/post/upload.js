@@ -1,7 +1,7 @@
 import { connectDB } from "@/util/database";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
-import * as dayjs from 'dayjs'
+import * as dayjs from "dayjs";
 
 export default async function handler(req, res) {
     if (req.method === "POST") {
@@ -10,8 +10,11 @@ export default async function handler(req, res) {
             console.log("🚀 ~ file: upload.js:9 ~ handler ~ session:", session);
 
             dayjs.locale("ko");
-            const currentDate = dayjs().format('YYYY/MM/DD HH:mm:ss'); // dayjs를 사용하여 현재 시간을 포맷팅합니다.
-            console.log("🚀 ~ file: upload.js:14 ~ handler ~ currentDate:", currentDate)
+            const currentDate = dayjs().format("YYYY/MM/DD HH:mm:ss"); // dayjs를 사용하여 현재 시간을 포맷팅합니다.
+            console.log(
+                "🚀 ~ file: upload.js:14 ~ handler ~ currentDate:",
+                currentDate
+            );
             /* const currentDate = new Date(); // 현재 시간 정보 생성
             const formattedDate = `${currentDate.getFullYear()}-${(
                 currentDate.getMonth() + 1
@@ -44,6 +47,7 @@ export default async function handler(req, res) {
                         author: session.user.name,
                         createdAt: currentDate,
                         view: body.view,
+                        email: session.user.email,
                     });
                 } else {
                     await db.collection("post").insertOne({
@@ -53,6 +57,7 @@ export default async function handler(req, res) {
                         author: session.user.name,
                         createdAt: currentDate,
                         view: body.view,
+                        email: session.user.email,
                     });
                 }
                 res.status(200).json("글이 업로드 되었습니다.");

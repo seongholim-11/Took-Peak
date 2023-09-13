@@ -1,15 +1,32 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 import Button from "react-bootstrap/Button";
 import { BiArrowBack } from "react-icons/bi";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
-export default function Back() {
+export default function Back({ result }) {
+    const [edit, setEdit] = useState(false);
+    const session = useSession();
+
     const router = useRouter();
     function onBackClick() {
         router.back();
     }
 
-    // 글쓴이와 현재 로그인된 유저 비교
-    
+    useEffect(() => {
+        // 글쓴이와 현재 로그인된 유저 비교
+        if (session.data) {
+            let loginUser = session.data.user.email;
+            if (loginUser == result.email) {
+                setEdit(true);
+            } else {
+                setEdit(false);
+            }
+        }
+    }, []);
+
     return (
         <div className="ped">
             {/* 뒤로가기 버튼을 누르면 해당 글의 카테고리 페이지로 이동 */}
@@ -18,10 +35,14 @@ export default function Back() {
                     <BiArrowBack />
                 </Button>
             </div>
-            <div className="ed">
-                <Button variant="outline-primary">Edit</Button>
-                <Button variant="outline-danger">Delete</Button>
-            </div>
+            {edit ? (
+                <div className="ed">
+                    <Button variant="outline-primary">Edit</Button>
+                    <Button variant="outline-danger">Delete</Button>
+                </div>
+            ) : (
+                ""
+            )}
         </div>
     );
 }

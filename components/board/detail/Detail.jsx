@@ -18,7 +18,7 @@ export default function Detail({ result }) {
     return (
         <Container>
             <div className="boardDetailWrap">
-                <Back />
+                <Back result={result}/>
                 <div className="detailWrap">
                     <div className="title">
                         <h1>{result.title}</h1>
