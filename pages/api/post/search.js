@@ -10,11 +10,11 @@ export default async function handler(req, res) {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log("POST Response:", data);
+                // console.log("POST Response:", data);
 
                 // Additional parsing to access the necessary data
                 const parsedData = JSON.parse(data.returnJSON);
-                console.log("Parsed Data:", parsedData);
+                // console.log("Parsed Data:", parsedData);
 
                 res.status(200).json(parsedData);
             } else {

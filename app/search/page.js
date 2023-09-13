@@ -13,6 +13,7 @@ import Pagination from "../../components/search/Pagination";
 
 export default function page() {
     const { searchValue, searchButton, setSearchButtonFalse, page, setPage } =
+
         useSearchStore();
     const [searchResult, setSearchResult] = useState([]);
     const [searchPageCnt, setSearchPageCnt] = useState(1);
@@ -38,6 +39,7 @@ export default function page() {
                     setSearchResult(data.srchList);
                     setSearchPageCnt(data.scn_cnt);
                     setSearchButtonFalse();
+                    console.log("🚀 ~ file: page.js:42 ~ page ~ searchButton:", searchButton)
                 })
                 .catch((error) => {
                     console.error("Error:", error);
