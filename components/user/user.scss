@@ -172,18 +172,19 @@
                     background-color: #f0f0f0;
                     font-size: 0.6rem;
                     padding: 0 10px;
+                    border: none;
                     &#avatar {
                         background-color: transparent;
                         padding-top: 10px;
                     }
                 }
-                .emailInput{
+                .emailInput {
                     display: flex;
-                    input{
+                    input {
                         flex-basis: 85%;
                         margin-right: 10px;
                     }
-                    button{
+                    button {
                         flex-basis: 15%;
                         // font-size: 1rem;
                         border-radius: 10px;
@@ -191,6 +192,7 @@
                         background-color: #0070f3;
                         color: #fff;
                         letter-spacing: 2px;
+                        border: none;
                     }
                 }
                 p {
@@ -200,13 +202,19 @@
                 .specialize {
                     display: flex;
                     flex-wrap: wrap;
-                    input {
-                        margin-right: 5px;
-                    }
-                    label {
-                        margin-right: 10px;
-                        color: #7d7d7d;
-                        font-size: 0.8rem;
+                    > div {
+                        display: flex;
+                        align-items: center;
+                        input {
+                            width: 20px;
+                            margin-right: 5px;
+                            margin-bottom: 0;
+                        }
+                        label {
+                            margin-right: 10px;
+                            color: #7d7d7d;
+                            font-size: 0.8rem;
+                        }
                     }
                 }
             }

@@ -65,7 +65,7 @@ export default function Password({
                 onChange={handlePasswordChange}
             />
             <label htmlFor="Confirmpassword">
-                Password{" "}
+            Confirm Password{" "}
                 {isValidConfirmPassword && isValidPassword ? (
                     <span
                         style={{
