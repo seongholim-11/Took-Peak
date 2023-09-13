@@ -1,7 +1,13 @@
 .container {
-    .prev {
+    .ped {
         margin: 30px 0;
-        a {
+        display: flex;
+        justify-content: space-between;
+        .ed {
+            button{
+
+                margin-left: 10px;
+            }
         }
     }
     .detailWrap {
