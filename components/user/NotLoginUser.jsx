@@ -14,13 +14,18 @@ import "./user.scss";
 import SignUp from "./SignUp";
 
 export default function notLoginUser() {
+    // 입력된 email 값
+    const [emailValue, setEmailValue] = useState("");
     // 모달창 유무
     const [show, setShow] = useState(false);
     // 회원가입 시 입력하는 프로필 사진
     const [src, setSrc] = useState("/image/main/user/Avatars.png");
 
     // 모달창을 열고 닫는 function
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setEmailValue("");
+    };
     const handleShow = () => setShow(true);
     return (
         <div className="yetUser">
@@ -32,6 +37,8 @@ export default function notLoginUser() {
                 src={src}
                 setSrc={setSrc}
                 handleClose={handleClose}
+                emailValue={emailValue}
+                setEmailValue={setEmailValue}
             />
             <Button
                 variant="secondary"

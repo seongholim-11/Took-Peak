@@ -11,9 +11,12 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Avatar from "./SignUp/Avatar";
 
-export default function SignUp({ show, handleClose }) {
-    // 입력된 email 값
-    const [emailValue, setEmailValue] = useState("");
+export default function SignUp({
+    show,
+    handleClose,
+    emailValue,
+    setEmailValue,
+}) {
     // 입력된 email 유효성 검사 결과
     const [isValidEmail, setIsValidEmail] = useState(false);
     // 입력된 password 값
@@ -97,7 +100,7 @@ export default function SignUp({ show, handleClose }) {
             alert("specialize는 필수 입력 사항입니다.");
             return;
         }
-        if (isValidEmail && isValidPassword && confirmPasswordValue) {
+        if (isValidEmail && isValidPassword && isValidConfirmPassword) {
             // fetch를 사용하여 데이터 서버로 전송
             const response = await fetch("/api/auth/signup", {
                 method: "POST",
@@ -117,8 +120,10 @@ export default function SignUp({ show, handleClose }) {
                 alert(errorResponse);
                 // 오류 처리
             }
-        } else {
-            alert("Email과 Password를 확인해주세요");
+        } else if (isValidEmail || (isValidPassword && confirmPasswordValue)) {
+            alert("이메일을 확인해주세요");
+        } else if ((isValidEmail && isValidPassword) || confirmPasswordValue) {
+            alert("비밀번호를 확인해주세요");
         }
     };
     return (
