@@ -17,7 +17,7 @@ export default function Detail({ result }) {
     return (
         <Container>
             <div className="wrap">
-                <Back />
+                <Back result={result} />
                 <div className="detailWrap">
                     <div className="title">
                         <h1>{result.title}</h1>
@@ -26,7 +26,9 @@ export default function Detail({ result }) {
                         <div className="creatView">
                             <span className="create">작성일: {createdAt}</span>{" "}
                             <RxDotFilled />{" "}
-                            <span className="view">조회수: {result.view}</span>
+                            <span className="view">
+                                조회수: {result.view + 1}
+                            </span>
                         </div>
                         <div className="author">글쓴이: {result.author}</div>
                     </div>
