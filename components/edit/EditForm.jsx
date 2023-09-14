@@ -18,7 +18,6 @@ import "./edit.scss";
 import ImageUpload from "./ImageUpload";
 
 function WriteForm({ result }) {
-    console.log("🚀 ~ file: EditForm.jsx:21 ~ WriteForm ~ result:", result);
     // 게시글이 업로드될 카테고리가 저장되는 state
     const [selectValue, setSelectValue] = useState(result.board);
     // 포트폴리오 이미지 정보(url)
