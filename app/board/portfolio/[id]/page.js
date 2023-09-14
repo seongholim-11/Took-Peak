@@ -16,7 +16,7 @@ export default async function page(props) {
     // db에서 해당 게시글 정보 받아오기
     let db = (await connectDB).db("forum");
     let result = await db.collection("post").findOne({ _id: new ObjectId(id) });
-    result._id = result._id.toString();
+    // result._id = result._id.toString();
 
     // db에 저장되어 있는 view 정보가 string이라서 $inc 명령어가 오류 발생
     // update를 통해 number로 형변환
