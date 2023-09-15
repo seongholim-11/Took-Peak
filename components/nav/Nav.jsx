@@ -14,6 +14,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaMountain } from "react-icons/fa";
 // scss
 import "./nav.scss";
+import { Button } from "react-bootstrap";
 
 function NavBar() {
     let session = useSession();
@@ -83,14 +84,24 @@ function NavBar() {
                                 Login
                             </Nav.Link>
                         ) : (
-                            <Nav.Link
+                            <>
+                                <Nav.Link
                                 className="signInOut"
                                 onClick={() => {
                                     signOut();
                                 }}
                             >
-                                Logout
+                                mypage
                             </Nav.Link>
+                                <Nav.Link
+                                    className="signInOut"
+                                    onClick={() => {
+                                        signOut();
+                                    }}
+                                >
+                                    Logout
+                                </Nav.Link>
+                            </>
                         )}
                     </Nav>
                 </Navbar.Collapse>
