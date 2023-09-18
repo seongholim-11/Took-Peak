@@ -5,7 +5,7 @@
         display: flex;
         flex-direction: column;
         flex-basis: 50%;
-        &:nth-child(1){
+        &:nth-child(1) {
             margin-right: 30px;
         }
         .userInf {
@@ -31,13 +31,39 @@
                 .mypageSpecialize {
                     margin: 10px;
                 }
-                .blue{color: #0070f3;}
+                .blue {
+                    color: #0070f3;
+                }
             }
         }
         .contents {
             background-color: #f0f0f0;
             border-radius: 20px;
             padding: 20px 0;
+            margin-bottom: 20px;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                width: 8px; /* 스크롤바의 너비 */
+            }
+            &::-webkit-scrollbar-thumb {
+                height: 30%; /* 스크롤바의 길이 */
+                background: #217af4; /* 스크롤바의 색상 */
+
+                border-radius: 10px;
+            }
+            &::-webkit-scrollbar-track {
+                border-radius: 10px;
+                background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+            }
+            .mypagecontent {
+                padding: 0px 30px;
+            }
+            .mypageLink {
+                max-width: 100px;
+                white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 합니다. */
+                overflow: hidden; /* 넘치는 텍스트를 숨깁니다. */
+                text-overflow: ellipsis; /* 생략 부호(...)를 표시합니다. */
+            }
         }
         .comments {
             background-color: #f0f0f0;
@@ -55,6 +81,13 @@
         flex-direction: column;
         .row {
             flex-basis: 100%;
+            &:nth-child(1) {
+                margin-right: 0px;
+                margin-bottom: 30px;
+            }
+            .contents {
+                margin-bottom: 30px;
+            }
         }
     }
 }

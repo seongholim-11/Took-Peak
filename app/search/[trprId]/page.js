@@ -19,29 +19,9 @@ export default function page(props) {
     const cnt = props.searchParams.trprDegr;
 
     let [information, setInformation] = useState([]);
+    console.log("🚀 ~ file: page.js:22 ~ page ~ information:", information)
     // 로딩 유무
     const [loading, setLoading] = useState(true);
-
-    const getAddress = () => {
-        const mapScript = document.createElement("script");
-
-        mapScript.async = true;
-        mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&libraries=services&autoload=false`;
-
-        document.head.appendChild(mapScript);
-
-        var geocoder = new window.kakao.maps.services.Geocoder();
-
-        var callback = function (result, status) {
-            if (status === window.kakao.maps.services.Status.OK) {
-                console.log(result);
-            }
-        };
-
-        if (information.addr1) {
-            geocoder.addressSearch(`${information.addr1}`, callback);
-        }
-    };
 
     useEffect(() => {
         const programDetail = async () => {
@@ -88,7 +68,7 @@ export default function page(props) {
                 ) : (
                     <ContentTable information={information} id={id} cnt={cnt} />
                 )}
-                <Comment id={id} cnt={cnt}/>
+                <Comment id={id} cnt={cnt} title={information.trprNm}/>
             </div>
         </Container>
     );

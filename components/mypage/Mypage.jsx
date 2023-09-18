@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 
 import "./mypage.scss";
 import Contents from "./Contents";
+import Comments from "./Comments";
 
 export default function Mypage() {
     return (
@@ -21,7 +22,9 @@ export default function Mypage() {
                     <Col className="contents">
                         <Contents />
                     </Col>
-                    <Col className="comments">2 of 2</Col>
+                    <Col className="comments">
+                        <Comments />
+                    </Col>
                 </Row>
             </div>
         </Container>
