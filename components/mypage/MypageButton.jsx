@@ -12,6 +12,7 @@ import { MdContactPage } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import { BiLogIn } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import { BsPencilSquare } from "react-icons/bs";
 // react-bootstrap
 import Button from "react-bootstrap/Button";
 // scss
@@ -28,10 +29,16 @@ export default function Mypage() {
                 <div className="buttonWrap" style={{ display: "block" }}>
                     {session.data ? (
                         <div className="buttons">
-                            <Link href={'/mypage'}>
+                            <Link href={"/mypage"}>
                                 <button>
                                     <MdContactPage />
                                     <p>my page</p>
+                                </button>
+                            </Link>
+                            <Link href={"/write"}>
+                                <button>
+                                    <BsPencilSquare />
+                                    <p>write</p>
                                 </button>
                             </Link>
                             <button
