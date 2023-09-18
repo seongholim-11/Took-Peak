@@ -4,11 +4,10 @@
 
 // react&next
 import { useEffect, useState } from "react";
-import { signOut } from "next-auth/react";
 // bootstrap
 import Spinner from "react-bootstrap/Spinner";
 // scss
-import './user.scss'
+import './mypage.scss'
 
 export default function User() {
     // 로그인한 유저 정보
@@ -31,7 +30,7 @@ export default function User() {
                 setUserInformation(data);
                 setLoading(false);
             } catch (error) {
-                console.error("댓글 데이터를 가져오는 중 오류 발생:", error);
+                console.error("유저 데이터를 가져오는 중 오류 발생:", error);
             }
         };
 
@@ -39,22 +38,19 @@ export default function User() {
     }, []);
 
     return (
-        <div className="user">
+        <div className="mypageUserInf">
             {loading ? (
                 <Spinner animation="border" size="lg" style={{color: '#0070f3'}}/>
             ) : (
                 <>
                     <img src={userInformation.avatar} alt="profil" />
-                    <div className="userInf">
-                        <div className="nickname">@{userInformation.name}</div>
-                        <div className="email">{userInformation.email}</div>
+                    <div className="mypageUser">
+                        <div className="mypageNickname"><span className="blue">Nickname:</span> @{userInformation.name}</div>
+                        <div className="mypageEmail"><span className="blue">Email:</span> {userInformation.email}</div>
                     </div>
-                    <div className="specialize">
-                        <span>{userInformation.specialize}</span>
+                    <div className="mypageSpecialize">
+                        <span><span className="blue">Specialize:</span> {userInformation.specialize}</span>
                     </div>
-                    <button className="triangle" onClick={() => signOut()}>
-                        <span>LogOut</span>
-                    </button>
                 </>
             )}
         </div>
