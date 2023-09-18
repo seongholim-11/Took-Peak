@@ -30,6 +30,7 @@ export default function Comment({ result }) {
 
     // 댓글의 부모 글 확인을 위해 ID 값
     const { _id } = result;
+    const { title } = result;
 
     const handleSubmit = async () => {
         try {
@@ -38,7 +39,7 @@ export default function Comment({ result }) {
             const response = await fetch("/api/post/boardComment", {
                 method: "POST",
                 // 범객체 타입을 전송하기 위해서는 stringify 사용
-                body: JSON.stringify({ comment, _id }),
+                body: JSON.stringify({ comment, _id, title }),
             });
 
             // 서버와의 통신이 성공하면

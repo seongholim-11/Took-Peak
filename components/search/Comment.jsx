@@ -12,7 +12,7 @@ import { BsFillSendFill } from "react-icons/bs";
 import './search.scss'
 
 // 게시글의 상세페이지에서 글의 id와 프로그램 회차를 받아옴
-export default function Comment({ id, cnt }) {
+export default function Comment({ id, cnt, title }) {
     // 댓글들의 부모글을 구분할 수 있는 값
     const parent = id + cnt;
 
@@ -30,7 +30,7 @@ export default function Comment({ id, cnt }) {
         try {
             const response = await fetch("/api/post/searchComment", {
                 method: "POST",
-                body: JSON.stringify({ comment, parent }),
+                body: JSON.stringify({ comment, parent, title }),
             });
             // 서버 통신 성공 시
             if (response.ok) {
