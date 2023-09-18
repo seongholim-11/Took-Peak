@@ -41,7 +41,8 @@ export default async function handler(req, res) {
                         parent: body._id,
                         author: session.user.name,
                         createdAt: formattedDate,
-                        title: body.title
+                        title: body.title,
+                        email: session.user.email,
                     });
                     res.status(200).json("저장완료");
                 } else {
