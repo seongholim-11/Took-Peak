@@ -36,11 +36,11 @@
                 }
             }
         }
-        .contents {
+        .contents,
+        .comments {
             background-color: #f0f0f0;
             border-radius: 20px;
-            padding: 20px 0;
-            margin-bottom: 20px;
+            padding: 20px 30px;
             overflow-y: scroll;
             &::-webkit-scrollbar {
                 width: 8px; /* 스크롤바의 너비 */
@@ -55,8 +55,12 @@
                 border-radius: 10px;
                 background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
             }
+        }
+        .contents {
+            margin-bottom: 20px;
+
             .mypagecontent {
-                padding: 0px 30px;
+
             }
             .mypageLink {
                 max-width: 100px;
@@ -66,9 +70,6 @@
             }
         }
         .comments {
-            background-color: #f0f0f0;
-            border-radius: 20px;
-            padding: 20px 0;
         }
     }
 }

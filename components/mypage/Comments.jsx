@@ -44,7 +44,7 @@ export default function Comments() {
     return (
         <>
             <div className="boardComment">
-                <h5>게시판 댓글</h5>
+                <div>게시판 댓글</div>
                 <Table striped bordered hover style={{ fontSize: "0.8rem" }}>
                     <thead>
                         <tr style={{ textAlign: "center" }}>
@@ -80,7 +80,7 @@ export default function Comments() {
                 </Table>
             </div>
             <div className="searchComment">
-                <h5>훈련과정 댓글</h5>
+                <div>훈련과정 댓글</div>
                 <Table striped bordered hover style={{ fontSize: "0.8rem" }}>
                     <thead>
                         <tr style={{ textAlign: "center" }}>

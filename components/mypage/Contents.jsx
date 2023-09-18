@@ -26,6 +26,7 @@ export default function Contents() {
     }, []);
     return (
         <div className="mypagecontent">
+            <div>게시글</div>
             <Table striped bordered hover style={{ fontSize: "0.8rem" }}>
                 <thead>
                     <tr style={{ textAlign: "center" }}>
