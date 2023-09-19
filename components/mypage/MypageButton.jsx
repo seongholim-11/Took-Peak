@@ -30,18 +30,18 @@ export default function Mypage() {
                     {session.data ? (
                         <div className="buttons">
                             <Link href={"/mypage"}>
-                                <button>
+                                <button className="button">
                                     <MdContactPage />
                                     <p>my page</p>
                                 </button>
                             </Link>
                             <Link href={"/write"}>
-                                <button>
+                                <button className="button">
                                     <BsPencilSquare />
                                     <p>write</p>
                                 </button>
                             </Link>
-                            <button
+                            <button className="button"
                                 onClick={() => {
                                     signOut();
                                 }}
@@ -52,7 +52,7 @@ export default function Mypage() {
                         </div>
                     ) : (
                         <div className="buttons">
-                            <button
+                            <button className="button"
                                 onClick={() => {
                                     signIn();
                                 }}
