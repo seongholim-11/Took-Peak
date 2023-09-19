@@ -1,6 +1,6 @@
 .mypageWrap {
     z-index: 9999999;
-    width: 150px;
+    width: 9rem;
     position: fixed;
     bottom: 30px;
     right: 0px;
@@ -14,8 +14,8 @@
         justify-content: center;
         flex-direction: column;
         button {
-            width: 50px;
-            height: 50px;
+            width: 3rem;
+            height: 3rem;
             position: relative;
             background-color: #fff;
             margin-bottom: 10px;
@@ -29,7 +29,7 @@
                 transform: translate(-50%,-50%);
             }
             p {
-                width: 70px;
+                width: 4rem;
                 position: absolute;
                 top: 50%;
                 left: 50%;
