@@ -15,6 +15,7 @@ export default function Mypage() {
             <div className="gridWrap">
                 <Row>
                     <Col className="userInf">
+                        <div className="title">유저 정보</div>
                         <UserInf />
                     </Col>
                 </Row>
