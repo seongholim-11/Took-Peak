@@ -22,6 +22,12 @@
             border-radius: 50%;
             font-size: 25px;
             border: 2px solid #000;
+            svg{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
             p {
                 width: 70px;
                 position: absolute;
